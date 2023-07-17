@@ -24,12 +24,18 @@ class HomeAutomationTheme {
             textStyle: HomeAutomationStyles.elevatedButtonTextStyle
           ),
         ),
+        textTheme: const TextTheme(
+          headlineLarge: HomeAutomationStyles.headlineLarge,
+          labelLarge: HomeAutomationStyles.labelLarge,
+          labelMedium: HomeAutomationStyles.labelMedium,
+        ),
         drawerTheme: const DrawerThemeData(
           backgroundColor: HomeAutomationColors.darkSeedColor,
           scrimColor: Colors.black
         ),
         iconTheme: const IconThemeData(
-          size: 35
+          size: HomeAutomationStyles.mediumIconSize,
+          color: HomeAutomationColors.darkSecondary
         )
       ),
     Brightness.light: ThemeData(
@@ -53,12 +59,18 @@ class HomeAutomationTheme {
             )
           ),
         ),
+        textTheme: const TextTheme(
+          headlineLarge: HomeAutomationStyles.headlineLarge,
+          labelLarge: HomeAutomationStyles.labelLarge,
+          labelMedium: HomeAutomationStyles.labelMedium,
+        ),
         drawerTheme: const DrawerThemeData(
           backgroundColor: HomeAutomationColors.lightSeedColor,
           scrimColor: Colors.white
         ),
         iconTheme: const IconThemeData(
-          size: 35
+          size: HomeAutomationStyles.mediumIconSize,
+          color: HomeAutomationColors.darkSecondary
         )
       )
   };

@@ -22,3 +22,9 @@ enum FlickyAnimatedIconSizes {
   const FlickyAnimatedIconSizes(this.value);
   final double value;
 }
+
+enum HomeTileOptions {
+  addDevice,
+  manageDevices,
+  testConnection
+}

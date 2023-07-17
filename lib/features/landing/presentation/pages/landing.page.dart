@@ -3,6 +3,7 @@ import 'package:home_automation_app/features/navigation/presentation/widgets/hom
 import 'package:home_automation_app/features/navigation/presentation/widgets/side_drawer.dart';
 import 'package:home_automation_app/features/shared/widgets/flicky_animated_icons.dart';
 import 'package:home_automation_app/helpers/enums.dart';
+import 'package:home_automation_app/styles/styles.dart';
 
 class LandingPage extends StatelessWidget {
 
@@ -17,8 +18,6 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      extendBody: true,
       drawer: Drawer(
         child: SideDrawer(),
       ),
@@ -32,15 +31,17 @@ class LandingPage extends StatelessWidget {
           icon: FlickyAnimatedIconOptions.flickybulb,
           isSelected: true,
         ),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(
-              Icons.notifications,
+              Icons.notifications_outlined,
             ),
             onPressed: () {
               
             },
-          )
+          ),
+          HomeAutomationStyles.xsmallHGap
         ],
       ),
       body: Center(
