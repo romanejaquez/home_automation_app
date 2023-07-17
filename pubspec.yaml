@@ -41,6 +41,7 @@ dependencies:
   flutter_localizations: 
     sdk: flutter
   intl: any
+  flutter_animate: ^4.2.0
 
 dev_dependencies:
   flutter_test:
