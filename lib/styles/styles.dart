@@ -34,6 +34,10 @@ class HomeAutomationStyles {
     fontSize: HomeAutomationStyles.largeSize
   );
 
+  static const TextStyle headlineMedium = TextStyle(
+    fontSize: HomeAutomationStyles.mediumSize
+  );
+
   static const TextStyle labelLarge = TextStyle(
     fontSize: HomeAutomationStyles.labelLargeSize
   );

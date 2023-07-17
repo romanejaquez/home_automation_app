@@ -6,6 +6,7 @@ class FlickyAnimatedIcons extends StatefulWidget {
 
   final FlickyAnimatedIconOptions icon;
   final FlickyAnimatedIconSizes size;
+
   final bool isSelected;
   const FlickyAnimatedIcons({
     required this.icon,
@@ -18,6 +19,7 @@ class FlickyAnimatedIcons extends StatefulWidget {
 }
 
 class _FlickyAnimatedIconsState extends State<FlickyAnimatedIcons> {
+  
   late rive.StateMachineController smController;
   late rive.RiveAnimation animation;
   Map<Brightness, rive.SMIBool> states = {};

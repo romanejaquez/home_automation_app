@@ -26,6 +26,7 @@ class HomeAutomationTheme {
         ),
         textTheme: const TextTheme(
           headlineLarge: HomeAutomationStyles.headlineLarge,
+          headlineMedium: HomeAutomationStyles.headlineMedium,
           labelLarge: HomeAutomationStyles.labelLarge,
           labelMedium: HomeAutomationStyles.labelMedium,
         ),
@@ -61,6 +62,7 @@ class HomeAutomationTheme {
         ),
         textTheme: const TextTheme(
           headlineLarge: HomeAutomationStyles.headlineLarge,
+          headlineMedium: HomeAutomationStyles.headlineMedium,
           labelLarge: HomeAutomationStyles.labelLarge,
           labelMedium: HomeAutomationStyles.labelMedium,
         ),
