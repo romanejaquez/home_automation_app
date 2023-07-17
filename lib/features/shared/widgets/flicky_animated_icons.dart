@@ -70,7 +70,7 @@ class _FlickyAnimatedIconsState extends State<FlickyAnimatedIcons> {
         states[brightness]!.value = true;
       }
       else {
-        states.values.forEach((element) { element.value = false; });
+        for (var element in states.values) { element.value = false; }
       }
     }
 
