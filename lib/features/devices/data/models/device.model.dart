@@ -29,4 +29,13 @@ class DeviceModel {
       outlet: outlet ?? this.outlet
     );
   }
+
+  static DeviceModel empty() {
+    return const DeviceModel(
+      iconOption: FlickyAnimatedIconOptions.none,
+      label: '',
+      isSelected: false,
+      outlet: -1
+    );
+  }
 }

@@ -17,13 +17,13 @@ class SideDrawer extends StatelessWidget {
             Icon(
               FlickyIcons.flickylight,
               size: HomeAutomationStyles.largeIconSize,
-              color: Theme.of(context).drawerTheme.scrimColor
+              color: Theme.of(context).drawerTheme.surfaceTintColor
             ),
             const Spacer(),
             Icon(
               FlickyIcons.flicky,
               size: HomeAutomationStyles.largeIconSize, 
-              color: Theme.of(context).drawerTheme.scrimColor
+              color: Theme.of(context).drawerTheme.surfaceTintColor
             )
           ],
         ),

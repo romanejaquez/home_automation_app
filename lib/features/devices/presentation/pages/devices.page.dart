@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
+import 'package:home_automation_app/features/devices/presentation/widgets/devices_page_header.dart';
 import 'package:home_automation_app/features/devices/presentation/widgets/deviceslist.dart';
 import 'package:home_automation_app/features/shared/widgets/flicky_animated_icons.dart';
 import 'package:home_automation_app/helpers/enums.dart';
@@ -21,25 +22,7 @@ class DevicesPage extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: HomeAutomationStyles.largePadding,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(FlickyIcons.oven,
-                size: HomeAutomationStyles.largeIconSize,
-                color: Theme.of(context).colorScheme.primary,  
-              ),
-              HomeAutomationStyles.smallVGap,
-              Text('My Devices',
-                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                )
-              )
-            ],
-          ),
-        ),
+        const DevicesPageHeader(),
         devicesRetrieval.when(
           data: (deviceList) {
             return const DevicesList();

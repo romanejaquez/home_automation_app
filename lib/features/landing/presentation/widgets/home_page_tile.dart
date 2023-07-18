@@ -22,7 +22,9 @@ class HomePageTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(HomeAutomationStyles.smallRadius),
         color: Theme.of(context).colorScheme.secondary.withOpacity(0.15),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            onTap(tileOption);
+          },
           child: Container(
             width: 150,
             padding: HomeAutomationStyles.mediumPadding,

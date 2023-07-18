@@ -1,4 +1,5 @@
 enum FlickyAnimatedIconOptions {
+  none,
   flickybulb,
   flickytext,
   barhome,
@@ -27,4 +28,11 @@ enum HomeTileOptions {
   addDevice,
   manageDevices,
   testConnection
+}
+
+enum AddDeviceStates {
+  none,
+  saving,
+  saved,
+  error
 }

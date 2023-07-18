@@ -49,8 +49,8 @@ class HomeTileOptionsPanel extends ConsumerWidget {
               for(final tile in homeTiles)
                 HomePageTile(
                   tileOption: tile,
-                  onTap: () {
-
+                  onTap: (selectedTile) {
+                    ref.read(homeTileOptionsVMProvider.notifier).onTileSelected(selectedTile);
                   }
                 )
             ].animate(

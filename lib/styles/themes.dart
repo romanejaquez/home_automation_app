@@ -16,23 +16,34 @@ class HomeAutomationTheme {
           tertiary: HomeAutomationColors.darkTertiary,
           background: HomeAutomationColors.darkBackground,
         ),
+        progressIndicatorTheme: const ProgressIndicatorThemeData(
+          color: HomeAutomationColors.darkPrimary
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(),
             elevation: 0,
             shadowColor: Colors.transparent,
-            textStyle: HomeAutomationStyles.elevatedButtonTextStyle
+            foregroundColor: Colors.black,
+            textStyle: HomeAutomationStyles.elevatedButtonTextStyle.copyWith(
+              fontWeight: FontWeight.bold,
+              fontSize: HomeAutomationStyles.smallSize,
+              fontFamily: 'Product Sans',
+            )
           ),
         ),
-        textTheme: const TextTheme(
+        textTheme: TextTheme(
           headlineLarge: HomeAutomationStyles.headlineLarge,
           headlineMedium: HomeAutomationStyles.headlineMedium,
           labelLarge: HomeAutomationStyles.labelLarge,
           labelMedium: HomeAutomationStyles.labelMedium,
+          displayMedium: HomeAutomationStyles.labelMedium.copyWith(
+            color: Colors.white,
+          )
         ),
         drawerTheme: const DrawerThemeData(
           backgroundColor: HomeAutomationColors.darkSeedColor,
-          scrimColor: Colors.black
+          surfaceTintColor: Colors.black,
         ),
         iconTheme: const IconThemeData(
           size: HomeAutomationStyles.mediumIconSize,
@@ -50,25 +61,35 @@ class HomeAutomationTheme {
           tertiary: HomeAutomationColors.lightTertiary,
           background: HomeAutomationColors.lightBackground,
         ),
+        progressIndicatorTheme: const ProgressIndicatorThemeData(
+          color: HomeAutomationColors.lightPrimary
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(),
             elevation: 0,
+            foregroundColor: Colors.white,
+            padding: HomeAutomationStyles.mediumPadding,
             shadowColor: Colors.transparent,
             textStyle: HomeAutomationStyles.elevatedButtonTextStyle.copyWith(
-              color: Colors.white
+              fontWeight: FontWeight.bold,
+              fontSize: HomeAutomationStyles.smallSize,
+              fontFamily: 'Product Sans',
             )
           ),
         ),
-        textTheme: const TextTheme(
+        textTheme: TextTheme(
           headlineLarge: HomeAutomationStyles.headlineLarge,
           headlineMedium: HomeAutomationStyles.headlineMedium,
           labelLarge: HomeAutomationStyles.labelLarge,
           labelMedium: HomeAutomationStyles.labelMedium,
+          displayMedium: HomeAutomationStyles.labelMedium.copyWith(
+            color: Colors.black,
+          )
         ),
         drawerTheme: const DrawerThemeData(
           backgroundColor: HomeAutomationColors.lightSeedColor,
-          scrimColor: Colors.white
+          surfaceTintColor: Colors.white,
         ),
         iconTheme: const IconThemeData(
           size: HomeAutomationStyles.mediumIconSize,

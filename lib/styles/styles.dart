@@ -16,6 +16,7 @@ class HomeAutomationStyles {
   static const double smallIconSize = 16;
   static const double mediumIconSize = 32;
   static const double largeIconSize = 64;
+  static const double xlargeIconSize = 80;
 
   static const double xsmallSize = 8;
   static const double smallSize = 16;
@@ -58,6 +59,7 @@ class HomeAutomationStyles {
   static const SizedBox mediumHGap = SizedBox(width: 32);
   static const SizedBox largeHGap = SizedBox(width: 40);
 
+  static const double xsmallRadius = 12;
   static const double smallRadius = 24;
   static const double mediumRadius = 40;
   static const double largeRadius = 64;
