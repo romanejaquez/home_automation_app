@@ -19,5 +19,14 @@ class DeviceListViewModel extends StateNotifier<List<DeviceModel>> {
           device
     ];
   }
-  
+
+  void addDevice(DeviceModel device) {
+    state = [
+      ...state, device
+    ];
+  }
+
+  bool deviceExists(String deviceName) {
+    return state.any((d) => d.label.trim().toLowerCase() == deviceName.trim().toLowerCase());
+  }
 }

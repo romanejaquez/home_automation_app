@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_automation_app/features/devices/presentation/providers/add_device_providers.dart';
 import 'package:home_automation_app/features/devices/presentation/widgets/add_device_workflow/device_type_selection_panel.dart';
-import 'package:home_automation_app/features/shared/widgets/flicky_animated_icons.dart';
-import 'package:home_automation_app/helpers/enums.dart';
 import 'package:home_automation_app/styles/flicky_icons_icons.dart';
 import 'package:home_automation_app/styles/styles.dart';
 
@@ -23,7 +21,7 @@ class AddDeviceForm extends ConsumerWidget {
 
     final deviceNameCtrl = ref.read(deviceNameFieldProvider);
     final isFormValid = ref.watch(formValidationProvider);
-
+    
     return Form(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -55,9 +53,9 @@ class AddDeviceForm extends ConsumerWidget {
                           )),
                         ],
                       ),
-                      HomeAutomationStyles.smallVGap,
+                      HomeAutomationStyles.xsmallVGap,
                       Container(
-                        padding: HomeAutomationStyles.xsmallPadding,
+                        padding: HomeAutomationStyles.smallPadding,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(HomeAutomationStyles.xsmallRadius),
                           color: colorScheme.secondary.withOpacity(0.25)
@@ -65,6 +63,24 @@ class AddDeviceForm extends ConsumerWidget {
                         child: TextFormField(
                           controller: deviceNameCtrl,
                           style: textTheme.displayMedium,
+                          // validator: (String? name) {
+                          //   final isFieldValid = ref.read(deviceNameValidatorProvider(name!));
+                          //   return !isFieldValid ? 'Device name already exists' : null;
+                          // },
+                          decoration: InputDecoration(
+                            errorText: ref.watch(deviceExistsValidatorProvider) ? 'Device name already exists' : null,
+                            errorStyle: TextStyle(fontSize: 10, color: colorScheme.primary),
+                            focusedErrorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: colorScheme.primary,
+                              )
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: colorScheme.primary,
+                              )
+                            )
+                          ),
                           onChanged: (value) {
                             ref.read(deviceNameValueProvider.notifier).state = value;
                           },
@@ -78,7 +94,7 @@ class AddDeviceForm extends ConsumerWidget {
                     ],
                   ),
                 ),
-                HomeAutomationStyles.smallVGap,
+                HomeAutomationStyles.xsmallVGap,
                 const DeviceTypeSelectionPanel()
               ],
             ),

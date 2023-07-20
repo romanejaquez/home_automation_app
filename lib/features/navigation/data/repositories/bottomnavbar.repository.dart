@@ -14,10 +14,10 @@ class BottomNavBarRepository {
         route: HomePage.route,
         isSelected: true
       ),
-      // BottomBarNavItemModel(
-      //   iconOption: FlickyAnimatedIconOptions.barrooms,
-      //   route: RoomsPage.route
-      // ),
+      BottomBarNavItemModel(
+        iconOption: FlickyAnimatedIconOptions.barrooms,
+        route: RoomsPage.route
+      ),
       BottomBarNavItemModel(
         iconOption: FlickyAnimatedIconOptions.bardevices,
         route: DevicesPage.route

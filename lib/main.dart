@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fgbg/flutter_fgbg.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
 import 'package:home_automation_app/helpers/utils.dart';
 import 'package:home_automation_app/routes/app.routes.dart';
 import 'package:home_automation_app/styles/themes.dart';
@@ -11,17 +13,11 @@ void main() {
   );
 }
 
-class HomeAutomationApp extends StatelessWidget {
+class HomeAutomationApp extends ConsumerWidget {
   const HomeAutomationApp({super.key});
 
-  // var window = WidgetsBinding.instance.platformDispatcher;
-  //   window.onPlatformBrightnessChanged = () {
-      
-  //   };
-
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
 
     return MaterialApp.router(
       title: 'Home Automation',

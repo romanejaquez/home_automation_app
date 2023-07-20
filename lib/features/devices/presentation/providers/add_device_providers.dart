@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_automation_app/features/devices/data/models/device.model.dart';
+import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
 import 'package:home_automation_app/features/devices/presentation/viewmodels/add_device.viewmodel.dart';
 import 'package:home_automation_app/features/devices/presentation/viewmodels/add_device_save.viewmodel.dart';
 import 'package:home_automation_app/helpers/enums.dart';
@@ -48,6 +49,11 @@ final deviceTypeListProvider = Provider<List<DeviceModel>>((ref) {
   ];
 });
 
+final deviceExistsValidatorProvider = Provider<bool>((ref) {
+  var deviceName = ref.watch(deviceNameValueProvider);
+  return ref.read(deviceListVMProvider.notifier).deviceExists(deviceName);
+});
+
 final deviceTypeSelectionVMProvider = StateNotifierProvider<AddDeviceTypeViewModel, List<DeviceModel>>((ref) {
   final deviceTypesList = ref.read(deviceTypeListProvider);
   return AddDeviceTypeViewModel(deviceTypesList, ref);
@@ -60,7 +66,12 @@ final formValidationProvider = Provider<bool>((ref) {
   var deviceTypes = ref.watch(deviceTypeSelectionVMProvider);
   var deviceTypeSelected = deviceTypes.any((e) => e.isSelected);
   
-  var isFormValid = deviceName.isNotEmpty && deviceTypeSelected; // && outlet >= 0;
+  var deviceDoesNotExist = 
+    !ref.read(deviceListVMProvider.notifier).deviceExists(deviceName);
+  
+  var isFormValid = deviceName.isNotEmpty && 
+      deviceTypeSelected && deviceDoesNotExist; // && outlet >= 0 
+
   return isFormValid;
 });
 

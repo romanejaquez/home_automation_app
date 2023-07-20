@@ -1,22 +1,28 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
 import 'package:home_automation_app/features/landing/presentation/pages/home.page.dart';
 import 'package:home_automation_app/features/landing/presentation/pages/landing.page.dart';
+import 'package:home_automation_app/features/shared/providers/shared_providers.dart';
 import 'package:home_automation_app/helpers/utils.dart';
+import 'package:home_automation_app/styles/flicky_icons_icons.dart';
 import 'package:rive/rive.dart' as rive;
 
-class LoadingPage extends StatefulWidget {
+class LoadingPage extends ConsumerStatefulWidget {
 
   static const String route = '/loading';
   const LoadingPage({super.key});
 
   @override
-  State<LoadingPage> createState() => _LoadingPageState();
+  ConsumerState<LoadingPage> createState() => _LoadingPageState();
 }
 
-class _LoadingPageState extends State<LoadingPage> {
+class _LoadingPageState extends ConsumerState<LoadingPage> {
   late rive.StateMachineController smController;
   late rive.RiveAnimation animation;
   Map<Brightness, rive.SMIBool> states = {};
@@ -63,8 +69,11 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
 
-    splashTimer = Timer(const Duration(seconds: 4), () {
-      GoRouter.of(Utils.mainNav.currentContext!).go(HomePage.route);
+    ref.watch(localStorageProvider).initLocalStorage().then((value) {
+      ref.read(deviceRepositoryProvider).getListOfDevices().then((restoredList) {
+        ref.read(deviceListVMProvider.notifier).initializeState(restoredList);
+        GoRouter.of(Utils.mainNav.currentContext!).go(HomePage.route);
+      });
     });
 
     return Scaffold(

@@ -38,4 +38,22 @@ class DeviceModel {
       outlet: -1
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'label': label,
+      'iconOption': iconOption.name,
+      'isSelected': isSelected,
+      'outlet': outlet
+    };
+  }
+
+  factory DeviceModel.fromJson(Map<String, dynamic> json) {
+    return DeviceModel(
+      iconOption: FlickyAnimatedIconOptions.values.firstWhere((o) => o.name == json['iconOption']),
+      label: json['label'], 
+      isSelected: json['isSelected'], 
+      outlet: json['outlet']
+    );
+  }
 }

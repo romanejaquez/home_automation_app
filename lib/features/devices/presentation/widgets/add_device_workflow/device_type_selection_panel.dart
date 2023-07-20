@@ -13,7 +13,7 @@ class DeviceTypeSelectionPanel extends ConsumerWidget {
     final deviceTypes = ref.watch(deviceTypeSelectionVMProvider);
     
     return SizedBox(
-      height: 150,
+      height: 140,
       child: ListView.builder(
         padding: const EdgeInsets.only(left: HomeAutomationStyles.mediumSize),
         scrollDirection: Axis.horizontal,
