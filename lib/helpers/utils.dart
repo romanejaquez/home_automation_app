@@ -21,5 +21,17 @@ class Utils {
     ).whenComplete(() {
       onDismissed!();
     });
+
+    // showDialog(
+    //   // isDismissible: dismissible,
+    //   // isScrollControlled: false,
+    //   context: context,
+    //   //backgroundColor: Colors.transparent,
+    //   builder: (ctxt) {
+    //     return child;
+    //   }
+    // ).whenComplete(() {
+    //   onDismissed!();
+    // });
   }
 }

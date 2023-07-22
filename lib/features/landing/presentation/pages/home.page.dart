@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_automation_app/features/landing/presentation/responsiveness/landing_page_responsive.config.dart';
 import 'package:home_automation_app/features/landing/presentation/widgets/energy_consumption_panel.dart';
 import 'package:home_automation_app/features/landing/presentation/widgets/home_page_header.dart';
 import 'package:home_automation_app/features/landing/presentation/widgets/home_page_tile.dart';
@@ -12,13 +13,31 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+
+    final config = LandingPageResponsiveConfig.landingPageConfig(context);
+
+    return Flex(
+      direction: Axis.vertical,
       children: [
-        HomePageHeader(),
-        HomeAutomationStyles.smallVGap,
-        HomeTileOptionsPanel(),
-        EnergyConsumptionPanel()
+        Expanded(
+          flex: config.homeTopPartFlex,
+          child: Flex(
+            direction: config.homeTopDirection,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: config.homeHeaderFlex,
+                child: const HomePageHeader()
+              ),
+              HomeAutomationStyles.smallVGap,
+              const Expanded(
+                child: HomeTileOptionsPanel()
+              ),
+            ],
+          ),
+        ),
+        const EnergyConsumptionPanel()
       ],
     );
   }

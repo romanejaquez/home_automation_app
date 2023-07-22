@@ -15,6 +15,7 @@ class HomeTileOptionsPanel extends ConsumerWidget {
 
     return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
@@ -39,7 +40,7 @@ class HomeTileOptionsPanel extends ConsumerWidget {
           duration: 0.5.seconds,
           curve: Curves.easeInOut
         ),
-        HomeAutomationStyles.smallVGap,
+        HomeAutomationStyles.xsmallVGap,
         SizedBox(
           height: 150,
           child: ListView(

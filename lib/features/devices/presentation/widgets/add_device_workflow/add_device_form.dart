@@ -22,93 +22,95 @@ class AddDeviceForm extends ConsumerWidget {
     final deviceNameCtrl = ref.read(deviceNameFieldProvider);
     final isFormValid = ref.watch(formValidationProvider);
     
-    return Form(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: HomeAutomationStyles.largePadding.copyWith(
-                    bottom: 0
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            FlickyIcons.oven, 
-                            size: HomeAutomationStyles.mediumIconSize,
-                            color: colorScheme.primary
-                          ),
-                          HomeAutomationStyles.smallHGap,
-                          Text('Add New Device', style: textTheme.headlineSmall!.copyWith(
-                            color: colorScheme.primary,
-                            fontWeight: FontWeight.bold,
-                          )),
-                        ],
-                      ),
-                      HomeAutomationStyles.xsmallVGap,
-                      Container(
-                        padding: HomeAutomationStyles.smallPadding,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(HomeAutomationStyles.xsmallRadius),
-                          color: colorScheme.secondary.withOpacity(0.25)
+    return Material(
+      child: Form(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: HomeAutomationStyles.largePadding.copyWith(
+                      bottom: 0
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              FlickyIcons.oven, 
+                              size: HomeAutomationStyles.mediumIconSize,
+                              color: colorScheme.primary
+                            ),
+                            HomeAutomationStyles.smallHGap,
+                            Text('Add New Device', style: textTheme.headlineSmall!.copyWith(
+                              color: colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            )),
+                          ],
                         ),
-                        child: TextFormField(
-                          controller: deviceNameCtrl,
-                          style: textTheme.displayMedium,
-                          // validator: (String? name) {
-                          //   final isFieldValid = ref.read(deviceNameValidatorProvider(name!));
-                          //   return !isFieldValid ? 'Device name already exists' : null;
-                          // },
-                          decoration: InputDecoration(
-                            errorText: ref.watch(deviceExistsValidatorProvider) ? 'Device name already exists' : null,
-                            errorStyle: TextStyle(fontSize: 10, color: colorScheme.primary),
-                            focusedErrorBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: colorScheme.primary,
+                        HomeAutomationStyles.xsmallVGap,
+                        Container(
+                          padding: HomeAutomationStyles.smallPadding,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(HomeAutomationStyles.xsmallRadius),
+                            color: colorScheme.secondary.withOpacity(0.25)
+                          ),
+                          child: TextFormField(
+                            controller: deviceNameCtrl,
+                            style: textTheme.displayMedium,
+                            // validator: (String? name) {
+                            //   final isFieldValid = ref.read(deviceNameValidatorProvider(name!));
+                            //   return !isFieldValid ? 'Device name already exists' : null;
+                            // },
+                            decoration: InputDecoration(
+                              errorText: ref.watch(deviceExistsValidatorProvider) ? 'Device name already exists' : null,
+                              errorStyle: TextStyle(fontSize: 10, color: colorScheme.primary),
+                              focusedErrorBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: colorScheme.primary,
+                                )
+                              ),
+                              errorBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: colorScheme.primary,
+                                )
                               )
                             ),
-                            errorBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: colorScheme.primary,
-                              )
-                            )
+                            onChanged: (value) {
+                              ref.read(deviceNameValueProvider.notifier).state = value;
+                            },
                           ),
-                          onChanged: (value) {
-                            ref.read(deviceNameValueProvider.notifier).state = value;
-                          },
                         ),
-                      ),
-                      HomeAutomationStyles.mediumVGap,
-                      Text('Type of Device', style: textTheme.labelMedium!.copyWith(
-                        color: colorScheme.secondary,
-                        fontWeight: FontWeight.bold,
-                      )),
-                    ],
+                        HomeAutomationStyles.mediumVGap,
+                        Text('Type of Device', style: textTheme.labelMedium!.copyWith(
+                          color: colorScheme.secondary,
+                          fontWeight: FontWeight.bold,
+                        )),
+                      ],
+                    ),
                   ),
-                ),
-                HomeAutomationStyles.xsmallVGap,
-                const DeviceTypeSelectionPanel()
-              ],
+                  HomeAutomationStyles.xsmallVGap,
+                  const DeviceTypeSelectionPanel()
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: HomeAutomationStyles.largePadding,
-            child: ElevatedButton(
-              onPressed: isFormValid ? () {
-                onSave();
-              } : null,
-              child: const Text('Add Device')
-            ),
-          )
-        ],
+            Padding(
+              padding: HomeAutomationStyles.largePadding,
+              child: ElevatedButton(
+                onPressed: isFormValid ? () {
+                  onSave();
+                } : null,
+                child: const Text('Add Device')
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
