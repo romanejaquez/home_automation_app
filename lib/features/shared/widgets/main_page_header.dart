@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:home_automation_app/features/shared/responsiveness/main_page_header_responsive.config.dart';
 import 'package:home_automation_app/styles/styles.dart';
 
 class MainPageHeader extends StatelessWidget {
@@ -16,10 +17,12 @@ class MainPageHeader extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final colorScheme = Theme.of(context).colorScheme;
+    final config = MainPageHeaderResponsiveConfig.headerConfig(context);
 
     return Padding(
       padding: HomeAutomationStyles.largePadding,
-      child: Column(
+      child: Flex(
+        direction: config.headerDirection,
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -27,10 +30,11 @@ class MainPageHeader extends StatelessWidget {
             size: HomeAutomationStyles.largeIconSize,
             color: colorScheme.primary,  
           ),
-          HomeAutomationStyles.smallVGap,
+          config.iconTitleGap,
           Text(title,
-            style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+            style: config.headerStyle.copyWith(
               color: colorScheme.primary,
+              fontWeight: FontWeight.bold,
             )
           )
         ].animate(

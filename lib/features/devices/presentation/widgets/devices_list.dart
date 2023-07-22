@@ -24,7 +24,7 @@ class DevicesList extends ConsumerWidget {
           }
         ).animate(
           delay: (index * 0.125).seconds,
-        ).slideX(
+        ).slideY(
           begin: 0.5, end: 0,
           duration: 0.5.seconds,
           curve: Curves.easeInOut
