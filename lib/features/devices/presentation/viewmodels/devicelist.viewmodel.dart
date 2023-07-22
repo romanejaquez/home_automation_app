@@ -1,5 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:home_automation_app/features/devices/data/models/device.model.dart';
+import 'package:home_automation_app/features/devices/presentation/pages/device_details.page.dart';
+import 'package:home_automation_app/features/devices/presentation/providers/add_device_providers.dart';
+import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
+import 'package:home_automation_app/helpers/utils.dart';
 
 class DeviceListViewModel extends StateNotifier<List<DeviceModel>> {
   
@@ -11,13 +16,16 @@ class DeviceListViewModel extends StateNotifier<List<DeviceModel>> {
   }
 
   void toggleDevice(DeviceModel selectedDevice) {
+
     state = [
       for(final device in state)
-        if (device == selectedDevice)
+        if (device == selectedDevice) 
           device.copyWith(isSelected: !device.isSelected)
         else
           device
     ];
+
+    ref.read(saveAddDeviceVMProvider.notifier).saveDeviceList();
   }
 
   void addDevice(DeviceModel device) {
@@ -28,5 +36,21 @@ class DeviceListViewModel extends StateNotifier<List<DeviceModel>> {
 
   bool deviceExists(String deviceName) {
     return state.any((d) => d.label.trim().toLowerCase() == deviceName.trim().toLowerCase());
+  }
+
+  void showDeviceDetails(device) {
+    ref.read(selectedDeviceProvider.notifier).state = device;
+    GoRouter.of(Utils.mainNav.currentContext!).push(DeviceDetailsPage.route);
+  }
+
+  void removeDevice(DeviceModel deviceData) {
+
+    GoRouter.of(Utils.mainNav.currentContext!).pop();
+
+    state = [
+      for(final device in state)
+        if (device != deviceData)
+          device
+    ];
   }
 }

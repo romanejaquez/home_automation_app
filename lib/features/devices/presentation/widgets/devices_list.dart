@@ -19,8 +19,8 @@ class DevicesList extends ConsumerWidget {
       itemBuilder: (context, index) {
         return DeviceRowItem(
           device: devicesList[index], 
-          onToggleDevice: (device) {
-            ref.read(deviceListVMProvider.notifier).toggleDevice(device);
+          onTapDevice: (device) {
+            ref.read(deviceListVMProvider.notifier).showDeviceDetails(device);
           }
         ).animate(
           delay: (index * 0.125).seconds,

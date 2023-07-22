@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
-import 'package:home_automation_app/features/devices/presentation/widgets/devices_page_header.dart';
+import 'package:home_automation_app/features/shared/widgets/main_page_header.dart';
 import 'package:home_automation_app/features/devices/presentation/widgets/devices_list.dart';
 import 'package:home_automation_app/features/shared/widgets/flicky_animated_icons.dart';
 import 'package:home_automation_app/features/shared/widgets/flicky_loading.dart';
@@ -21,7 +21,10 @@ class DevicesPage extends ConsumerWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        DevicesPageHeader(),
+        MainPageHeader(
+          icon: FlickyIcons.oven,
+          title: 'My Devices',
+        ),
         Expanded(
           child: DevicesList()
         )

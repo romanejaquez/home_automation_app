@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_automation_app/features/navigation/presentation/widgets/home_automation_bottombar.dart';
+import 'package:home_automation_app/features/navigation/presentation/widgets/main_appbar.dart';
 import 'package:home_automation_app/features/navigation/presentation/widgets/side_drawer.dart';
 import 'package:home_automation_app/features/shared/widgets/flicky_animated_icons.dart';
 import 'package:home_automation_app/helpers/enums.dart';
@@ -18,36 +19,18 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      drawer: Drawer(
+      drawer: const Drawer(
         child: SideDrawer(),
       ),
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Theme.of(context).colorScheme.secondary
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: FlickyAnimatedIcons(
-          icon: FlickyAnimatedIconOptions.flickybulb,
-          isSelected: true,
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.notifications_outlined,
-            ),
-            onPressed: () {
-              
-            },
-          ),
-          HomeAutomationStyles.xsmallHGap
-        ],
-      ),
+      appBar: const HomeAutomationAppBar(),
       body: Center(
-        child: child,
-      ),
-      bottomNavigationBar: HomeAutomationBottomBar(),
+        child: Column(
+          children: [
+            Expanded(child: child),
+            const HomeAutomationBottomBar(),
+          ],
+        ),
+      )
     );
   }
 }

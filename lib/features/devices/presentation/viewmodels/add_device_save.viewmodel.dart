@@ -12,7 +12,7 @@ class AddDeviceSaveViewModel extends StateNotifier<AddDeviceStates> {
   final Ref ref;
   AddDeviceSaveViewModel(super.state, this.ref);
 
-  void saveDevice() async {
+  Future<void> saveDevice() async {
 
     state = AddDeviceStates.saving;
     await Future.delayed(1.seconds);
@@ -31,12 +31,20 @@ class AddDeviceSaveViewModel extends StateNotifier<AddDeviceStates> {
       )
     );
 
+    final saveSuccess = await saveDeviceList();
+    
+    if (saveSuccess) {
+      state = AddDeviceStates.saved;
+      await Future.delayed(1.seconds);
+      GoRouter.of(Utils.mainNav.currentContext!).pop();
+    }
+  }
+
+  Future<bool> saveDeviceList() async {
+    await Future.delayed(1.seconds);
     final updatedList = ref.read(deviceListVMProvider);
     ref.read(deviceRepositoryProvider).saveDeviceList(updatedList);
-
-    state = AddDeviceStates.saved;
-    await Future.delayed(1.seconds);
-    GoRouter.of(Utils.mainNav.currentContext!).pop();
+    return Future.value(true);
   }
 
   void resetAllValues() {

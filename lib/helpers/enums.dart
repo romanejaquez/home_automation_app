@@ -18,7 +18,8 @@ enum FlickyAnimatedIconSizes {
   small(35),
   medium(60),
   large(100),
-  xlarge(120);
+  xlarge(120),
+  x2large(160);
 
   const FlickyAnimatedIconSizes(this.value);
   final double value;

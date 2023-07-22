@@ -105,7 +105,7 @@ class AddDeviceForm extends ConsumerWidget {
               onPressed: isFormValid ? () {
                 onSave();
               } : null,
-              child: const Text('Add Field')
+              child: const Text('Add Device')
             ),
           )
         ],

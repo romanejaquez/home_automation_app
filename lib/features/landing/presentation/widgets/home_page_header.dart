@@ -21,7 +21,8 @@ class HomePageHeader extends StatelessWidget {
           ),
           Text('Roman', 
             style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-              color: Theme.of(context).colorScheme.primary
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.bold
             )
           ),
         ].animate(

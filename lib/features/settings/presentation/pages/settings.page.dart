@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:home_automation_app/features/shared/widgets/main_page_header.dart';
+import 'package:home_automation_app/styles/flicky_icons_icons.dart';
 
 class SettingsPage extends StatelessWidget {
 
@@ -8,8 +10,17 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('settings'),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const MainPageHeader(
+          icon: Icons.build,
+          title: 'My Settings',
+        ),
+        Expanded(
+          child: Container()
+        )
+      ],
     );
   }
 }

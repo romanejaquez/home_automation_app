@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:home_automation_app/features/devices/presentation/pages/device_details.page.dart';
 import 'package:home_automation_app/features/devices/presentation/pages/devices.page.dart';
 import 'package:home_automation_app/features/intro/presentation/pages/loading.page.dart';
 import 'package:home_automation_app/features/intro/presentation/pages/splash.page.dart';
@@ -72,6 +73,13 @@ class AppRoutes {
             },
           ),
         ]
+      ),
+      GoRoute(
+        parentNavigatorKey: Utils.mainNav,
+        path: DeviceDetailsPage.route,
+        builder: (context, state) {
+          return const DeviceDetailsPage();
+        },
       ),
     ]
   );

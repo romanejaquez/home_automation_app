@@ -1,27 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:home_automation_app/styles/flicky_icons_icons.dart';
 import 'package:home_automation_app/styles/styles.dart';
 
-class DevicesPageHeader extends StatelessWidget {
-  const DevicesPageHeader({super.key});
+class MainPageHeader extends StatelessWidget {
+
+  final String title;
+  final IconData icon;
+  const MainPageHeader({
+    required this.title,
+    required this.icon,
+    super.key
+  });
 
   @override
   Widget build(BuildContext context) {
+
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
       padding: HomeAutomationStyles.largePadding,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(FlickyIcons.oven,
+          Icon(icon,
             size: HomeAutomationStyles.largeIconSize,
-            color: Theme.of(context).colorScheme.primary,  
+            color: colorScheme.primary,  
           ),
           HomeAutomationStyles.smallVGap,
-          Text('My Devices',
+          Text(title,
             style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-              color: Theme.of(context).colorScheme.primary,
+              color: colorScheme.primary,
             )
           )
         ].animate(
