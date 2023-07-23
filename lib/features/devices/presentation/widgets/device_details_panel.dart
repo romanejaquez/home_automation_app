@@ -21,7 +21,31 @@ class DeviceDetailsPanel extends ConsumerWidget {
       deviceData = deviceList.firstWhere((d) => d.label == deviceData.label);
     }
     else {
-      returningWidget = const SizedBox.shrink();
+      returningWidget = Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.bolt,
+              size: HomeAutomationStyles.largeIconSize,
+              color: Theme.of(context).colorScheme.secondary
+            ),
+            Text('Select device', style: Theme.of(context).textTheme.labelLarge!
+              .copyWith(
+                color: Theme.of(context).colorScheme.secondary
+              )
+            )
+          ].animate(
+            interval: 200.ms,
+          ).slideY(
+            begin: 0.5, end: 0,
+            duration: 0.5.seconds,
+            curve: Curves.easeInOut,
+          ).fadeIn(
+            duration: 0.5.seconds,
+            curve: Curves.easeInOut,
+          ),
+        ),
+      );
       return returningWidget;
     }
 

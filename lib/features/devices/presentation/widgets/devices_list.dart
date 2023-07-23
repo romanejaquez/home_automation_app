@@ -43,7 +43,7 @@ class DevicesList extends ConsumerWidget {
           ),
           HomeAutomationStyles.xsmallVGap,
           Text('No available devices', textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.labelMedium!.copyWith(
+            style: Theme.of(context).textTheme.labelLarge!.copyWith(
               color: Theme.of(context).colorScheme.secondary
             )
           )
