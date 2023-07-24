@@ -46,6 +46,7 @@ dependencies:
   shared_preferences: ^2.2.0
   flutter_fgbg: ^0.2.2
   responsive_builder: ^0.7.0
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:

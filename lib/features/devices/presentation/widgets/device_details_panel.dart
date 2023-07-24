@@ -62,40 +62,43 @@ class DeviceDetailsPanel extends ConsumerWidget {
               color: selectionColor.withOpacity(0.125)
             ),
             child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  FlickyAnimatedIcons(
-                    icon: deviceData.iconOption,
-                    size: FlickyAnimatedIconSizes.x2large,
-                    isSelected: deviceData.isSelected,
-                  ),
-                  Text(deviceData.label,
-                    style: Theme.of(context).textTheme.headlineMedium!.
-                    copyWith(
-                      color: selectionColor
-                    )
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      ref.read(deviceListVMProvider.notifier).toggleDevice(deviceData);
-                    },
-                    child: Icon(
-                      deviceData.isSelected ? Icons.toggle_on : 
-                      Icons.toggle_off,
-                      color: selectionColor,
-                      size: HomeAutomationStyles.x2largeIconSize,
+              child: Padding(
+                padding: HomeAutomationStyles.smallPadding,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FlickyAnimatedIcons(
+                      icon: deviceData.iconOption,
+                      size: FlickyAnimatedIconSizes.x2large,
+                      isSelected: deviceData.isSelected,
                     ),
-                  )
-                ].animate(
-                  interval: 100.ms
-                ).slideY(
-                  begin: 0.5, end: 0,
-                  duration: 0.5.seconds,
-                  curve: Curves.easeInOut,
-                ).fadeIn(
-                  duration: 0.5.seconds,
-                  curve: Curves.easeInOut,
+                    Text(deviceData.label,
+                      style: Theme.of(context).textTheme.headlineMedium!.
+                      copyWith(
+                        color: selectionColor
+                      )
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        ref.read(deviceListVMProvider.notifier).toggleDevice(deviceData);
+                      },
+                      child: Icon(
+                        deviceData.isSelected ? Icons.toggle_on : 
+                        Icons.toggle_off,
+                        color: selectionColor,
+                        size: HomeAutomationStyles.x2largeIconSize,
+                      ),
+                    )
+                  ].animate(
+                    interval: 100.ms
+                  ).slideY(
+                    begin: 0.5, end: 0,
+                    duration: 0.5.seconds,
+                    curve: Curves.easeInOut,
+                  ).fadeIn(
+                    duration: 0.5.seconds,
+                    curve: Curves.easeInOut,
+                  ),
                 ),
               ),
             ),

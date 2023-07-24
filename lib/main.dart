@@ -19,24 +19,16 @@ class HomeAutomationApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
-    return FGBGNotifier(
-        onEvent: (FGBGType eventType) async {
-          if (eventType == FGBGType.background) {
-            final deviceList = ref.read(deviceListVMProvider);
-            ref.read(deviceRepositoryProvider).saveDeviceList(deviceList);
-          }
-        },
-        child: MaterialApp.router(
-          title: 'Home Automation',
-          theme: HomeAutomationTheme.theme[Brightness.light],
-          darkTheme: HomeAutomationTheme.theme[Brightness.dark],
-          debugShowCheckedModeBanner: false,
-          supportedLocales: AppLocalizations.supportedLocales,
-          routeInformationProvider: AppRoutes.router.routeInformationProvider,
-          routeInformationParser: AppRoutes.router.routeInformationParser,
-          routerDelegate: AppRoutes.router.routerDelegate,
-        )
+    return MaterialApp.router(
+      title: 'Home Automation',
+      theme: HomeAutomationTheme.theme[Brightness.light],
+      darkTheme: HomeAutomationTheme.theme[Brightness.dark],
+      themeMode: ThemeMode.system,
+      debugShowCheckedModeBanner: false,
+      supportedLocales: AppLocalizations.supportedLocales,
+      routeInformationProvider: AppRoutes.router.routeInformationProvider,
+      routeInformationParser: AppRoutes.router.routeInformationParser,
+      routerDelegate: AppRoutes.router.routerDelegate,
     );
-    
   }
 }

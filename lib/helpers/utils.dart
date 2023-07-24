@@ -32,12 +32,10 @@ class Utils {
       showDialog(
         context: context,
         builder: (ctxt) {
-          return Container(
-            margin: EdgeInsets.symmetric(
-              horizontal: MediaQuery.sizeOf(context).width * 0.25,
-              vertical: MediaQuery.sizeOf(context).height * 0.09,
-            ),
-            child: child,
+          return FractionallySizedBox(
+            widthFactor: 0.5,
+            heightFactor: 0.8,
+            child: child
           );
         }
       ).whenComplete(() {

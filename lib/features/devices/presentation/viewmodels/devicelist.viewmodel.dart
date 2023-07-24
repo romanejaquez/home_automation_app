@@ -4,6 +4,7 @@ import 'package:home_automation_app/features/devices/data/models/device.model.da
 import 'package:home_automation_app/features/devices/presentation/pages/device_details.page.dart';
 import 'package:home_automation_app/features/devices/presentation/providers/add_device_providers.dart';
 import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
+import 'package:home_automation_app/features/shared/providers/shared_providers.dart';
 import 'package:home_automation_app/helpers/utils.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -16,7 +17,7 @@ class DeviceListViewModel extends StateNotifier<List<DeviceModel>> {
     state = devices;
   }
 
-  void toggleDevice(DeviceModel selectedDevice) {
+  void toggleDevice(DeviceModel selectedDevice) async {
 
     state = [
       for(final device in state)
@@ -27,6 +28,7 @@ class DeviceListViewModel extends StateNotifier<List<DeviceModel>> {
     ];
 
     ref.read(saveAddDeviceVMProvider.notifier).saveDeviceList();
+    ref.read(deviceServiceFutureProvider(selectedDevice));
   }
 
   void addDevice(DeviceModel device) {

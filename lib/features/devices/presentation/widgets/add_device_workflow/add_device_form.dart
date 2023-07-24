@@ -130,7 +130,6 @@ class AddDeviceForm extends ConsumerWidget {
                   ],
                 ),
               ),
-              
             ],
           ),
           Padding(

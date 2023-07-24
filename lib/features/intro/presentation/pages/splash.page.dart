@@ -59,12 +59,6 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
 
-    // splashTimer = Timer(const Duration(seconds: 2), () {
-    //   setState(() {
-    //     state.value = true;
-    //   });
-    // });
-
     splashTimer = Timer(const Duration(seconds: 4), () {
       GoRouter.of(Utils.mainNav.currentContext!).go(LoadingPage.route);
     });

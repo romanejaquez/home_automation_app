@@ -13,6 +13,7 @@ import 'package:home_automation_app/features/landing/presentation/pages/landing.
 import 'package:home_automation_app/features/shared/providers/shared_providers.dart';
 import 'package:home_automation_app/helpers/utils.dart';
 import 'package:home_automation_app/styles/flicky_icons_icons.dart';
+import 'package:home_automation_app/styles/styles.dart';
 import 'package:rive/rive.dart' as rive;
 
 class LoadingPage extends ConsumerStatefulWidget {
@@ -78,11 +79,47 @@ class _LoadingPageState extends ConsumerState<LoadingPage> {
     });
 
     return Scaffold(
-      body: Center(
-        child: SizedBox(
-          width: 200,
-          height: 200,
-          child: animation),
+      body: Stack(
+        children: [
+          Center(
+            child: SizedBox(
+              width: 200,
+              height: 200,
+              child: animation),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: SafeArea(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const SizedBox(
+                    width: HomeAutomationStyles.mediumSize,
+                    height: HomeAutomationStyles.mediumSize,
+                    child: CircularProgressIndicator()
+                  ),
+                  HomeAutomationStyles.smallVGap,
+                  Text('initializing app...',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.labelMedium!.
+                    copyWith(
+                      color: Theme.of(context).colorScheme.primary
+                    )
+                  )
+                ].animate(
+                  interval: 100.ms,
+                ).slideY(
+                  begin: 0.5, end: 0,
+                  duration: 0.25.seconds,
+                  curve: Curves.easeInOut,
+                ).fadeIn(
+                  duration: 0.25.seconds,
+                  curve: Curves.easeInOut,
+                ),
+              ),
+            )
+          )
+        ],
       ),
     );
   }

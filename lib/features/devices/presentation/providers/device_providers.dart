@@ -2,6 +2,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_automation_app/features/devices/data/models/device.model.dart';
 import 'package:home_automation_app/features/devices/data/repositories/devices.repository.dart';
 import 'package:home_automation_app/features/devices/presentation/viewmodels/devicelist.viewmodel.dart';
+import 'package:home_automation_app/features/shared/models/device_response.model.dart';
+import 'package:home_automation_app/features/shared/providers/shared_providers.dart';
+import 'package:home_automation_app/features/shared/services/device.service.dart';
 
 final deviceRepositoryProvider = Provider((ref) {
   return DevicesRepository(ref);
