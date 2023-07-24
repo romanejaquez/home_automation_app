@@ -5,7 +5,9 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:home_automation_app/features/devices/presentation/providers/add_device_providers.dart';
 import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
+import 'package:home_automation_app/features/intro/presentation/providers/loading_page_providers.dart';
 import 'package:home_automation_app/features/landing/presentation/pages/home.page.dart';
 import 'package:home_automation_app/features/landing/presentation/pages/landing.page.dart';
 import 'package:home_automation_app/features/shared/providers/shared_providers.dart';
@@ -69,11 +71,10 @@ class _LoadingPageState extends ConsumerState<LoadingPage> {
   @override
   Widget build(BuildContext context) {
 
-    ref.watch(localStorageProvider).initLocalStorage().then((value) {
-      ref.read(deviceRepositoryProvider).getListOfDevices().then((restoredList) {
-        ref.read(deviceListVMProvider.notifier).initializeState(restoredList);
+    ref.read(loadingFutureProvider.future).then((value) {
+      if (value) {
         GoRouter.of(Utils.mainNav.currentContext!).go(HomePage.route);
-      });
+      }
     });
 
     return Scaffold(

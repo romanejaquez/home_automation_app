@@ -18,7 +18,7 @@ class Utils {
     if (deviceType == DeviceScreenType.mobile) {
       showModalBottomSheet(
         isDismissible: dismissible,
-        isScrollControlled: false,
+        isScrollControlled: true,
         context: context,
         backgroundColor: Colors.transparent,
         builder: (ctxt) {
@@ -31,12 +31,11 @@ class Utils {
     else {
       showDialog(
         context: context,
-        //backgroundColor: Colors.transparent,
         builder: (ctxt) {
           return Container(
             margin: EdgeInsets.symmetric(
               horizontal: MediaQuery.sizeOf(context).width * 0.25,
-              vertical: MediaQuery.sizeOf(context).height * 0.125,
+              vertical: MediaQuery.sizeOf(context).height * 0.09,
             ),
             child: child,
           );
