@@ -11,7 +11,6 @@ class DeviceService {
   const DeviceService(this.ref);
 
   Future<DeviceResponse> toggleDevice(DeviceModel device) async {
-
     final outlet = ref.read(outletListProvider).firstWhere((o) => int.parse(o.id) == device.outlet);
     var url = Uri.http(outlet.ip, 'relay/${outlet.id}', {'turn': (device.isSelected ? 'off' : 'on')});
     var response = await http.get(url);

@@ -11,6 +11,7 @@ import 'package:home_automation_app/features/intro/presentation/providers/loadin
 import 'package:home_automation_app/features/landing/presentation/pages/home.page.dart';
 import 'package:home_automation_app/features/landing/presentation/pages/landing.page.dart';
 import 'package:home_automation_app/features/shared/providers/shared_providers.dart';
+import 'package:home_automation_app/helpers/enums.dart';
 import 'package:home_automation_app/helpers/utils.dart';
 import 'package:home_automation_app/styles/flicky_icons_icons.dart';
 import 'package:home_automation_app/styles/styles.dart';
@@ -30,6 +31,7 @@ class _LoadingPageState extends ConsumerState<LoadingPage> {
   late rive.RiveAnimation animation;
   Map<Brightness, rive.SMIBool> states = {};
   bool isInitialized = false;
+  bool isLoadingTriggered = false;
   Timer splashTimer = Timer(Duration.zero, () {});
 
   @override
@@ -72,11 +74,57 @@ class _LoadingPageState extends ConsumerState<LoadingPage> {
   @override
   Widget build(BuildContext context) {
 
-    ref.read(loadingFutureProvider.future).then((value) {
-      if (value) {
+    final loadingComplete = ref.watch(loadingNotificationVMProvider);
+    final loadingMsg = ref.watch(loadingMessageProvider);
+
+    if (loadingComplete == AppLoadingStates.success) {
+      Future.delayed(Duration.zero, () {
         GoRouter.of(Utils.mainNav.currentContext!).go(HomePage.route);
-      }
-    });
+      });
+    }
+
+    Widget loadingWidget = const SizedBox.shrink();
+
+    switch(loadingComplete) {
+      case AppLoadingStates.none:
+         Future.delayed(Duration.zero, () {
+          ref.read(loadingNotificationVMProvider.notifier).triggerLoading();
+        });
+        break;
+      case AppLoadingStates.success:
+      case AppLoadingStates.loading:
+        loadingWidget = Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(
+              width: HomeAutomationStyles.mediumSize,
+              height: HomeAutomationStyles.mediumSize,
+              child: CircularProgressIndicator()
+            ),
+            HomeAutomationStyles.smallVGap,
+            Text(loadingMsg,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.labelMedium!.
+              copyWith(
+                color: Theme.of(context).colorScheme.primary
+              )
+            ),
+            HomeAutomationStyles.smallVGap,
+          ].animate(
+            interval: 100.ms,
+          ).slideY(
+            begin: 0.5, end: 0,
+            duration: 0.25.seconds,
+            curve: Curves.easeInOut,
+          ).fadeIn(
+            duration: 0.25.seconds,
+            curve: Curves.easeInOut,
+          ),
+        );
+        break;
+      case AppLoadingStates.error:
+        break;
+    }
 
     return Scaffold(
       body: Stack(
@@ -90,33 +138,7 @@ class _LoadingPageState extends ConsumerState<LoadingPage> {
           Align(
             alignment: Alignment.bottomCenter,
             child: SafeArea(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const SizedBox(
-                    width: HomeAutomationStyles.mediumSize,
-                    height: HomeAutomationStyles.mediumSize,
-                    child: CircularProgressIndicator()
-                  ),
-                  HomeAutomationStyles.smallVGap,
-                  Text('initializing app...',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.labelMedium!.
-                    copyWith(
-                      color: Theme.of(context).colorScheme.primary
-                    )
-                  )
-                ].animate(
-                  interval: 100.ms,
-                ).slideY(
-                  begin: 0.5, end: 0,
-                  duration: 0.25.seconds,
-                  curve: Curves.easeInOut,
-                ).fadeIn(
-                  duration: 0.25.seconds,
-                  curve: Curves.easeInOut,
-                ),
-              ),
+              child: loadingWidget,
             )
           )
         ],

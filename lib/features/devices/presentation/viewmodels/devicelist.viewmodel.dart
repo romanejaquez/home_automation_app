@@ -26,9 +26,6 @@ class DeviceListViewModel extends StateNotifier<List<DeviceModel>> {
         else
           device
     ];
-
-    ref.read(saveAddDeviceVMProvider.notifier).saveDeviceList();
-    ref.read(deviceServiceFutureProvider(selectedDevice));
   }
 
   void addDevice(DeviceModel device) {

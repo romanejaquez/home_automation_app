@@ -37,3 +37,10 @@ enum AddDeviceStates {
   saved,
   error
 }
+
+enum AppLoadingStates {
+  none,
+  loading,
+  success,
+  error
+}

@@ -1,14 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:home_automation_app/features/devices/presentation/providers/add_device_providers.dart';
-import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
-import 'package:home_automation_app/features/shared/providers/shared_providers.dart';
+import 'package:home_automation_app/features/intro/presentation/viewmodels/loading_notification.viewmodel.dart';
+import 'package:home_automation_app/helpers/enums.dart';
 
-final loadingFutureProvider = FutureProvider<bool>((ref) async {
+final loadingMessageProvider = StateProvider<String>((ref) => '');
 
-    final localStorageInitialized = await ref.read(localStorageProvider).initLocalStorage();
-    final devicesList = await ref.read(deviceRepositoryProvider).getListOfDevices();
-    ref.read(deviceListVMProvider.notifier).initializeState(devicesList);
-
-    final outletListLoaded = await ref.read(outletListRepositoryProvider.future);
-    return localStorageInitialized && outletListLoaded;
+final loadingNotificationVMProvider = StateNotifierProvider<LoadingNotificationViewModel, AppLoadingStates>((ref) {
+  return LoadingNotificationViewModel(AppLoadingStates.none, ref);
 });
