@@ -1,4 +1,3 @@
-import 'package:home_automation_app/features/shared/widgets/flicky_animated_icons.dart';
 import 'package:home_automation_app/helpers/enums.dart';
 
 class DeviceModel {

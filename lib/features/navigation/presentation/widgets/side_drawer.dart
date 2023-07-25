@@ -25,6 +25,7 @@ class SideDrawer extends StatelessWidget {
               size: HomeAutomationStyles.largeIconSize,
               color: theme.surfaceTintColor
             ),
+            HomeAutomationStyles.largeVGap,
             Expanded(
               child: Consumer(
                 builder: (context, ref, child) {
@@ -33,7 +34,7 @@ class SideDrawer extends StatelessWidget {
 
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: List.generate(sideMenuItems.length, (index) {
 

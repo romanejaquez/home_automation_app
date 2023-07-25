@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:home_automation_app/features/devices/presentation/pages/device_details.page.dart';
-import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
 import 'package:home_automation_app/features/devices/presentation/responsiveness/device_details_responsive.config.dart';
 import 'package:home_automation_app/features/devices/presentation/widgets/device_details_panel.dart';
 import 'package:home_automation_app/features/shared/widgets/main_page_header.dart';
 import 'package:home_automation_app/features/devices/presentation/widgets/devices_list.dart';
-import 'package:home_automation_app/features/shared/widgets/flicky_animated_icons.dart';
-import 'package:home_automation_app/features/shared/widgets/flicky_loading.dart';
-import 'package:home_automation_app/helpers/enums.dart';
 import 'package:home_automation_app/styles/flicky_icons_icons.dart';
 import 'package:home_automation_app/styles/styles.dart';
 

@@ -65,14 +65,16 @@ class _FlickyAnimatedIconsState extends State<FlickyAnimatedIcons> {
   @override
   Widget build(BuildContext context) {
 
-    final brightness = MediaQuery.platformBrightnessOf(context);
+    final brightness = Theme.of(context).brightness;
 
+    for (var element in states.values) { element.value = false; }
+    
     if (isInitialized) {
+
+      for (var element in states.values) { element.value = false; }
+
       if (widget.isSelected) {
         states[brightness]!.value = true;
-      }
-      else {
-        for (var element in states.values) { element.value = false; }
       }
     }
 

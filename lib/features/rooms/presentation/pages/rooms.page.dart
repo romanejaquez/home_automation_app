@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_automation_app/features/shared/widgets/main_page_header.dart';
+import 'package:home_automation_app/features/shared/widgets/warning_message.dart';
 import 'package:home_automation_app/styles/flicky_icons_icons.dart';
 
 class RoomsPage extends StatelessWidget {
@@ -10,15 +11,15 @@ class RoomsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const MainPageHeader(
+        MainPageHeader(
           icon: FlickyIcons.room,
           title: 'My Rooms',
         ),
         Expanded(
-          child: Container()
+          child: WarningMessage(message: 'No available rooms'),
         )
       ],
     );

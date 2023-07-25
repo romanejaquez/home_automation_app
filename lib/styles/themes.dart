@@ -7,9 +7,11 @@ class HomeAutomationTheme {
   static Map<Brightness, ThemeData> theme = {
     Brightness.dark: ThemeData(
       canvasColor: Colors.transparent,
+      brightness: Brightness.dark,
       fontFamily: 'Product Sans',
         scaffoldBackgroundColor: HomeAutomationColors.darkScaffoldBackground,
         colorScheme: ColorScheme.fromSeed(
+          brightness: Brightness.dark,
           seedColor: HomeAutomationColors.darkSeedColor,
           primary: HomeAutomationColors.darkPrimary,
           secondary: HomeAutomationColors.darkSecondary,
@@ -53,8 +55,10 @@ class HomeAutomationTheme {
     Brightness.light: ThemeData(
       canvasColor: Colors.transparent,
         fontFamily: 'Product Sans',
+        brightness: Brightness.light,
         scaffoldBackgroundColor: HomeAutomationColors.lightScaffoldBackground,
         colorScheme: ColorScheme.fromSeed(
+          brightness: Brightness.light,
           seedColor: HomeAutomationColors.lightSeedColor,
           primary: HomeAutomationColors.lightPrimary,
           secondary: HomeAutomationColors.lightSecondary,
