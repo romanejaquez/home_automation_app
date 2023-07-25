@@ -50,6 +50,20 @@ class HomeAutomationTheme {
         iconTheme: const IconThemeData(
           size: HomeAutomationStyles.mediumIconSize,
           color: HomeAutomationColors.darkSecondary
+        ),
+        snackBarTheme: SnackBarThemeData(
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(HomeAutomationStyles.mediumRadius),
+            topRight: Radius.circular(HomeAutomationStyles.mediumRadius),
+          )),
+          backgroundColor: HomeAutomationColors.darkPrimary,
+          actionTextColor: Colors.black,
+          closeIconColor: Colors.black,
+          insetPadding: HomeAutomationStyles.smallPadding,
+          contentTextStyle: HomeAutomationStyles.labelMedium.copyWith(
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
         )
       ),
     Brightness.light: ThemeData(
@@ -98,6 +112,20 @@ class HomeAutomationTheme {
         iconTheme: const IconThemeData(
           size: HomeAutomationStyles.mediumIconSize,
           color: HomeAutomationColors.darkSecondary
+        ),
+        snackBarTheme: SnackBarThemeData(
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(HomeAutomationStyles.mediumRadius),
+            topRight: Radius.circular(HomeAutomationStyles.mediumRadius),
+          )),
+          backgroundColor: HomeAutomationColors.lightPrimary,
+          actionTextColor: Colors.white,
+          closeIconColor: Colors.white,
+          insetPadding: HomeAutomationStyles.smallPadding,
+          contentTextStyle: HomeAutomationStyles.labelMedium
+          .copyWith(
+            fontWeight: FontWeight.bold,
+            color: Colors.white),
         )
       )
   };

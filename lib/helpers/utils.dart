@@ -6,6 +6,7 @@ class Utils {
 
   static GlobalKey<NavigatorState> mainNav = GlobalKey();
   static GlobalKey<NavigatorState> tabNav = GlobalKey();
+  static GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
   static void showUIModal(
     BuildContext context, 
@@ -47,5 +48,33 @@ class Utils {
 
   static bool isMobile() {
     return getDeviceType(MediaQuery.sizeOf(Utils.mainNav.currentContext!)) == DeviceScreenType.mobile;
+  }
+
+  static void showMessageOnSnack(String title, String message) {
+
+    final theme = Theme.of(Utils.scaffoldKey.currentContext!).snackBarTheme;
+    final iconColor = theme.closeIconColor;
+    final messageStyle = theme.contentTextStyle!.copyWith(
+      fontWeight: FontWeight.normal
+    );
+
+    ScaffoldMessenger.of(
+      Utils.scaffoldKey.currentContext!).showSnackBar(
+      SnackBar(
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.warning_amber_outlined,
+              color: iconColor,
+              size: HomeAutomationStyles.largeIconSize,
+            ),
+            Text(title),
+            Text(message, style: messageStyle),
+            HomeAutomationStyles.smallVGap,
+          ],
+        )
+      )
+    );
   }
 }

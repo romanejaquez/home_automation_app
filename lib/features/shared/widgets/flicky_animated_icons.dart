@@ -67,8 +67,6 @@ class _FlickyAnimatedIconsState extends State<FlickyAnimatedIcons> {
 
     final brightness = Theme.of(context).brightness;
 
-    for (var element in states.values) { element.value = false; }
-    
     if (isInitialized) {
 
       for (var element in states.values) { element.value = false; }
