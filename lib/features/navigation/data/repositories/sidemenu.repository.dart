@@ -20,11 +20,6 @@ class SideMenuRepository {
         label: 'My Network',
         route: '/network'
       ),
-      SideMenuItem(
-        icon: Icons.logout_rounded,
-        label: 'Logout',
-        route: '/logout'
-      )
     ];
   }
 }

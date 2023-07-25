@@ -10,9 +10,12 @@ class SideDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final theme = Theme.of(context).drawerTheme;
+
     return Container(
       padding: HomeAutomationStyles.largePadding,
-      color: Theme.of(context).drawerTheme.backgroundColor,
+      color: theme.backgroundColor,
       child: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -20,7 +23,7 @@ class SideDrawer extends StatelessWidget {
             Icon(
               FlickyIcons.flickylight,
               size: HomeAutomationStyles.largeIconSize,
-              color: Theme.of(context).drawerTheme.surfaceTintColor
+              color: theme.surfaceTintColor
             ),
             Expanded(
               child: Consumer(
@@ -36,15 +39,17 @@ class SideDrawer extends StatelessWidget {
 
                       SideMenuItem item = sideMenuItems[index];
 
-                      return TextButton(onPressed: () {
+                      return TextButton(
+                        onPressed: () {
                           //
                         },
                         child: Row(
                           children: [
-                            Icon(item.icon, color: Colors.black),
+                            Icon(item.icon, color: theme.surfaceTintColor),
                             HomeAutomationStyles.smallHGap,
                             Text(item.label!,
-                              style: Theme.of(context).textTheme.labelLarge
+                              style: Theme.of(context).textTheme.labelLarge!
+                              .copyWith(color: theme.surfaceTintColor)
                             ),
                           ],
                         )
