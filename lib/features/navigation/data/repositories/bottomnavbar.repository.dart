@@ -1,6 +1,6 @@
 import 'package:home_automation_app/features/devices/presentation/pages/devices.page.dart';
 import 'package:home_automation_app/features/landing/presentation/pages/home.page.dart';
-import 'package:home_automation_app/features/navigation/data/models/bottombarnavitem.model.dart';
+import 'package:home_automation_app/features/navigation/data/models/bottom_bar_nav_item.dart';
 import 'package:home_automation_app/features/rooms/presentation/pages/rooms.page.dart';
 import 'package:home_automation_app/features/settings/presentation/pages/settings.page.dart';
 import 'package:home_automation_app/helpers/enums.dart';
