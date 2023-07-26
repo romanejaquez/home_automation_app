@@ -44,7 +44,7 @@ class _SplashPageState extends State<SplashPage> {
     
     smController = rive.StateMachineController.fromArtboard(
       artboard,
-        'boltanim${MediaQuery.platformBrightnessOf(context).name}'
+        'boltanim${Theme.of(context).brightness.name}'
       )!;
     
     artboard.addController(smController);

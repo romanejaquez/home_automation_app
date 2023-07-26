@@ -10,7 +10,7 @@ class HomeAutomationAppBar extends StatefulWidget implements PreferredSizeWidget
   State<HomeAutomationAppBar> createState() => _HomeAutomationAppBarState();
   
   @override
-  Size get preferredSize => const Size.fromHeight(60);
+  Size get preferredSize => const Size.fromHeight(HomeAutomationStyles.appBarSize);
 }
 
 class _HomeAutomationAppBarState extends State<HomeAutomationAppBar> {

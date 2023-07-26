@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fgbg/flutter_fgbg.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
-import 'package:home_automation_app/helpers/utils.dart';
 import 'package:home_automation_app/routes/app.routes.dart';
 import 'package:home_automation_app/styles/themes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,8 +18,8 @@ class HomeAutomationApp extends ConsumerWidget {
 
     return MaterialApp.router(
       title: 'Home Automation',
-      theme: HomeAutomationTheme.theme[Brightness.light],
-      darkTheme: HomeAutomationTheme.theme[Brightness.dark],
+      theme: HomeAutomationTheme.light,
+      darkTheme: HomeAutomationTheme.dark,
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       supportedLocales: AppLocalizations.supportedLocales,

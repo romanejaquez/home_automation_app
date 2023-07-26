@@ -11,7 +11,7 @@ class LoadingNotificationViewModel extends StateNotifier<AppLoadingStates> {
   final Ref ref;
   LoadingNotificationViewModel(super.state, this.ref);
 
-  void triggerLoading() async {
+  Future<void> triggerLoading() async {
 
     state = AppLoadingStates.loading;
 
@@ -30,6 +30,7 @@ class LoadingNotificationViewModel extends StateNotifier<AppLoadingStates> {
     final result = localStorageInitialized && outletListLoaded;
 
     await Future.delayed(1.seconds);
+    ref.read(loadingMessageProvider.notifier).state = result ? 'Done' : 'Error Loading App';
     state = result ? AppLoadingStates.success : AppLoadingStates.error;
   }
 }

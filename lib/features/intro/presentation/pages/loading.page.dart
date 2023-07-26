@@ -1,19 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:home_automation_app/features/devices/presentation/providers/add_device_providers.dart';
-import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
 import 'package:home_automation_app/features/intro/presentation/providers/loading_page_providers.dart';
 import 'package:home_automation_app/features/landing/presentation/pages/home.page.dart';
-import 'package:home_automation_app/features/landing/presentation/pages/landing.page.dart';
-import 'package:home_automation_app/features/shared/providers/shared_providers.dart';
 import 'package:home_automation_app/helpers/enums.dart';
 import 'package:home_automation_app/helpers/utils.dart';
-import 'package:home_automation_app/styles/flicky_icons_icons.dart';
 import 'package:home_automation_app/styles/styles.dart';
 import 'package:rive/rive.dart' as rive;
 
@@ -78,51 +73,38 @@ class _LoadingPageState extends ConsumerState<LoadingPage> {
     final loadingMsg = ref.watch(loadingMessageProvider);
 
     if (loadingComplete == AppLoadingStates.success) {
-      Future.delayed(Duration.zero, () {
+       SchedulerBinding.instance.addPostFrameCallback((_) {
         GoRouter.of(Utils.mainNav.currentContext!).go(HomePage.route);
       });
     }
 
-    Widget loadingWidget = const SizedBox.shrink();
+    Widget loadingIcon = const SizedBox.shrink();
 
     switch(loadingComplete) {
       case AppLoadingStates.none:
-         Future.delayed(Duration.zero, () {
-          ref.read(loadingNotificationVMProvider.notifier).triggerLoading();
+        Future.delayed(Duration.zero, () async {
+          await ref.read(loadingNotificationVMProvider.notifier).triggerLoading();
         });
         break;
       case AppLoadingStates.success:
+        loadingIcon = Icon(Icons.check_circle_outline_outlined,                size: HomeAutomationStyles.mediumIconSize,
+          color: Theme.of(context).colorScheme.primary
+        );
+        break;
       case AppLoadingStates.loading:
-        loadingWidget = Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const SizedBox(
-              width: HomeAutomationStyles.mediumSize,
-              height: HomeAutomationStyles.mediumSize,
-              child: CircularProgressIndicator()
-            ),
-            HomeAutomationStyles.smallVGap,
-            Text(loadingMsg,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.labelMedium!.
-              copyWith(
-                color: Theme.of(context).colorScheme.primary
-              )
-            ),
-            HomeAutomationStyles.smallVGap,
-          ].animate(
-            interval: 100.ms,
-          ).slideY(
-            begin: 0.5, end: 0,
-            duration: 0.25.seconds,
-            curve: Curves.easeInOut,
-          ).fadeIn(
-            duration: 0.25.seconds,
-            curve: Curves.easeInOut,
-          ),
+        loadingIcon = const SizedBox(
+          width: HomeAutomationStyles.mediumSize,
+          height: HomeAutomationStyles.mediumSize,
+          child: CircularProgressIndicator()
         );
         break;
       case AppLoadingStates.error:
+        loadingIcon = Icon(Icons.error_outline,
+          size: HomeAutomationStyles.mediumIconSize,
+          color: Theme.of(context).colorScheme.primary
+        );
+        break;
+      default:
         break;
     }
 
@@ -131,14 +113,37 @@ class _LoadingPageState extends ConsumerState<LoadingPage> {
         children: [
           Center(
             child: SizedBox(
-              width: 200,
-              height: 200,
+              width: HomeAutomationStyles.loadingIconSize,
+              height: HomeAutomationStyles.loadingIconSize,
               child: animation),
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: SafeArea(
-              child: loadingWidget,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  loadingIcon,
+                  HomeAutomationStyles.smallVGap,
+                  Text(loadingMsg,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.labelMedium!.
+                    copyWith(
+                      color: Theme.of(context).colorScheme.primary
+                    )
+                  ),
+                  HomeAutomationStyles.smallVGap,
+                ].animate(
+                  interval: 100.ms,
+                ).slideY(
+                  begin: 0.5, end: 0,
+                  duration: 0.25.seconds,
+                  curve: Curves.easeInOut,
+                ).fadeIn(
+                  duration: 0.25.seconds,
+                  curve: Curves.easeInOut,
+                ),
+              ),
             )
           )
         ],

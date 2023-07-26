@@ -42,9 +42,7 @@ dependencies:
     sdk: flutter
   intl: any
   flutter_animate: ^4.2.0
-  flutter_svg: ^2.0.7
   shared_preferences: ^2.2.0
-  flutter_fgbg: ^0.2.2
   responsive_builder: ^0.7.0
   http: ^1.1.0
 
