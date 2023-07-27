@@ -16,12 +16,8 @@ class DeviceDetailsPanel extends ConsumerWidget {
 
     final isDeviceSaving = ref.watch(deviceToggleVMProvider);
     var deviceData = ref.watch(selectedDeviceProvider);
-    final deviceList = ref.watch(deviceListVMProvider);
 
-    if (deviceList.any((d) => d.label == deviceData.label)) {
-      deviceData = deviceList.firstWhere((d) => d.label == deviceData.label);
-    }
-    else {
+    if (deviceData == null) {
       returningWidget = Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

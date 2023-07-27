@@ -10,8 +10,4 @@ class OutletModel {
     required this.ip,
     this.isTaken = false,
   });
-
-  static OutletModel empty() {
-    return OutletModel(id: '', label: '', ip: '', isTaken: false);
-  }
 }

@@ -12,8 +12,7 @@ class DeviceDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      key: Utils.scaffoldKey,
+    return const Scaffold(
       appBar: HomeAutomationAppBar(),
       body: Padding(
         padding: HomeAutomationStyles.largePadding,

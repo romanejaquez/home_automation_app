@@ -52,14 +52,14 @@ class Utils {
 
   static void showMessageOnSnack(String title, String message) {
 
-    final theme = Theme.of(Utils.scaffoldKey.currentContext!).snackBarTheme;
+    final theme = Theme.of(Utils.mainNav.currentContext!).snackBarTheme;
     final iconColor = theme.closeIconColor;
     final messageStyle = theme.contentTextStyle!.copyWith(
       fontWeight: FontWeight.normal
     );
 
     ScaffoldMessenger.of(
-      Utils.scaffoldKey.currentContext!).showSnackBar(
+      Utils.mainNav.currentContext!).showSnackBar(
       SnackBar(
         content: Column(
           mainAxisSize: MainAxisSize.min,

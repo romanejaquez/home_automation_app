@@ -29,8 +29,8 @@ final deviceListVMProvider = StateNotifierProvider<DeviceListViewModel, List<Dev
   return DeviceListViewModel([], ref);
 });
 
-final selectedDeviceProvider = StateProvider<DeviceModel>((ref) {
-  return DeviceModel.empty();
+final selectedDeviceProvider = StateProvider<DeviceModel?>((ref) {
+  return null;
 });
 
 final deviceToggleVMProvider = StateNotifierProvider<DeviceToggleViewModel, bool>((ref) {
