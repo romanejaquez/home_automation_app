@@ -27,16 +27,20 @@ class DevicesPage extends ConsumerWidget {
         ),
         Visibility(
           visible: config.showSingleLayout,
-          replacement: const Expanded(
-            child: Padding(
-              padding: HomeAutomationStyles.mediumPadding,
-              child: Row(
-                children: [
-                  Expanded(child: DevicesList()),
-                  Expanded(child: DeviceDetailsPanel())
-                ],
-              ),
-            ),
+          replacement: Builder(
+            builder: (context) {
+              return const Expanded(
+                child: Padding(
+                  padding: HomeAutomationStyles.mediumPadding,
+                  child: Row(
+                    children: [
+                      Expanded(child: DevicesList()),
+                      Expanded(child: DeviceDetailsPanel())
+                    ],
+                  ),
+                ),
+              );
+            }
           ),
           child: const Expanded(
             child: DevicesList()

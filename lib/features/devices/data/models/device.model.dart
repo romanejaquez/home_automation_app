@@ -29,15 +29,6 @@ class DeviceModel {
     );
   }
 
-  static DeviceModel empty() {
-    return const DeviceModel(
-      iconOption: FlickyAnimatedIconOptions.none,
-      label: '',
-      isSelected: false,
-      outlet: -1
-    );
-  }
-
   Map<String, dynamic> toJson() {
     return {
       'label': label,

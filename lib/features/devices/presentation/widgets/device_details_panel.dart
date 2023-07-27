@@ -72,6 +72,7 @@ class DeviceDetailsPanel extends ConsumerWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             FlickyAnimatedIcons(
+                              key: ValueKey(deviceData.iconOption),
                               icon: deviceData.iconOption,
                               size: FlickyAnimatedIconSizes.x2large,
                               isSelected: deviceData.isSelected,
