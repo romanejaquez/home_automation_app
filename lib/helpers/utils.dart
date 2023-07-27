@@ -13,10 +13,8 @@ class Utils {
     Widget child,
     { bool dismissible = false, Function? onDismissed }
   ) {
-
-    final deviceType = getDeviceType(MediaQuery.sizeOf(context));
-    
-    if (deviceType == DeviceScreenType.mobile) {
+   
+    if (isMobile()) {
       showModalBottomSheet(
         isDismissible: dismissible,
         isScrollControlled: true,
