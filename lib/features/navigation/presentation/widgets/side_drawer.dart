@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_automation_app/features/navigation/data/models/side_menu_item.dart';
 import 'package:home_automation_app/features/navigation/providers/navigation_providers.dart';
@@ -55,7 +56,16 @@ class SideDrawer extends StatelessWidget {
                           ],
                         )
                       );
-                    }),
+                    }).animate(
+                      interval: 200.ms,
+                    ).slideX(
+                      begin: -0.5, end: 0,
+                      duration: 0.5.seconds,
+                      curve: Curves.easeInOut,
+                    ).fadeIn(
+                      duration: 0.5.seconds,
+                      curve: Curves.easeInOut,
+                    ),
                   );
                 }
               ),
