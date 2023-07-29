@@ -6,7 +6,7 @@ import 'package:home_automation_app/styles/styles.dart';
 class MainPageHeader extends StatelessWidget {
 
   final String title;
-  final IconData icon;
+  final Widget icon;
   const MainPageHeader({
     required this.title,
     required this.icon,
@@ -24,12 +24,10 @@ class MainPageHeader extends StatelessWidget {
       child: Flex(
         direction: config.headerDirection,
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: config.crossAxisAlignment,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon,
-            size: HomeAutomationStyles.largeIconSize,
-            color: colorScheme.primary,  
-          ),
+          icon,
           config.iconTitleGap,
           Text(title,
             style: config.headerStyle.copyWith(
