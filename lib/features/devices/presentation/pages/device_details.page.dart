@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_automation_app/features/devices/presentation/widgets/device_details_panel.dart';
 import 'package:home_automation_app/features/navigation/presentation/widgets/main_appbar.dart';
-import 'package:home_automation_app/helpers/utils.dart';
 import 'package:home_automation_app/styles/styles.dart';
 
 class DeviceDetailsPage extends StatelessWidget {

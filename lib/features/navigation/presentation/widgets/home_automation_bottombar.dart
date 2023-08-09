@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_automation_app/features/landing/presentation/responsiveness/landing_page_responsive.config.dart';
 import 'package:home_automation_app/features/navigation/providers/navigation_providers.dart';
 import 'package:home_automation_app/features/shared/widgets/flicky_animated_icons.dart';
-import 'package:home_automation_app/helpers/enums.dart';
 import 'package:home_automation_app/styles/styles.dart';
 
 class HomeAutomationBottomBar extends ConsumerWidget {

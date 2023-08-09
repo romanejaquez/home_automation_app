@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:home_automation_app/features/shared/widgets/flicky_animated_icons.dart';
 import 'package:home_automation_app/features/shared/widgets/flicky_loading.dart';
-import 'package:home_automation_app/helpers/enums.dart';
 import 'package:home_automation_app/styles/styles.dart';
 
 class SavingDeviceView extends StatelessWidget {

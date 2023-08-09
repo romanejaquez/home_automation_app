@@ -2,11 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:home_automation_app/features/devices/data/models/device.model.dart';
 import 'package:home_automation_app/features/devices/presentation/pages/device_details.page.dart';
-import 'package:home_automation_app/features/devices/presentation/providers/add_device_providers.dart';
 import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
-import 'package:home_automation_app/features/shared/providers/shared_providers.dart';
 import 'package:home_automation_app/helpers/utils.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 
 class DeviceListViewModel extends StateNotifier<List<DeviceModel>> {
   

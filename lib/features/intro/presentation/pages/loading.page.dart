@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -26,8 +25,6 @@ class _LoadingPageState extends ConsumerState<LoadingPage> {
   late rive.RiveAnimation animation;
   Map<Brightness, rive.SMIBool> states = {};
   bool isInitialized = false;
-  bool isLoadingTriggered = false;
-  Timer splashTimer = Timer(Duration.zero, () {});
 
   @override
   void initState() {
@@ -69,6 +66,15 @@ class _LoadingPageState extends ConsumerState<LoadingPage> {
   @override
   Widget build(BuildContext context) {
 
+    final theme = MediaQuery.platformBrightnessOf(context);
+
+    if (isInitialized) {
+
+      for(var valueThemes in Brightness.values) {
+        states[valueThemes]!.value = theme == valueThemes;
+      }
+    }
+
     final loadingComplete = ref.watch(loadingNotificationVMProvider);
     final loadingMsg = ref.watch(loadingMessageProvider);
 
@@ -87,7 +93,8 @@ class _LoadingPageState extends ConsumerState<LoadingPage> {
         });
         break;
       case AppLoadingStates.success:
-        loadingIcon = Icon(Icons.check_circle_outline_outlined,                size: HomeAutomationStyles.mediumIconSize,
+        loadingIcon = Icon(Icons.check_circle_outline_outlined,                
+          size: HomeAutomationStyles.mediumIconSize,
           color: Theme.of(context).colorScheme.primary
         );
         break;

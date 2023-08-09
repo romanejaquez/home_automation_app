@@ -2,7 +2,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:home_automation_app/features/devices/data/models/device.model.dart';
-import 'package:home_automation_app/features/devices/data/models/outlet.model.dart';
 import 'package:home_automation_app/features/devices/presentation/providers/add_device_providers.dart';
 import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
 import 'package:home_automation_app/helpers/enums.dart';

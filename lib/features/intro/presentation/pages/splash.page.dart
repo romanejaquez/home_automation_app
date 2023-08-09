@@ -20,6 +20,7 @@ class _SplashPageState extends State<SplashPage> {
   late rive.RiveAnimation animation;
   late rive.SMIBool state;
   Timer splashTimer = Timer(Duration.zero, () {});
+  Timer durationTimer = Timer(Duration.zero, () {});
 
   @override
   void initState() {
@@ -36,6 +37,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void dispose() {
     splashTimer.cancel();
+    durationTimer.cancel();
     smController.dispose();
     super.dispose();
   }
@@ -51,7 +53,7 @@ class _SplashPageState extends State<SplashPage> {
 
     state = smController.findInput<bool>('loaded') as rive.SMIBool;
     
-    splashTimer = Timer(Duration(seconds: 2), () {
+    splashTimer = Timer(const Duration(seconds: 2), () {
       state.value = true;
     });
   }
@@ -59,7 +61,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
 
-    splashTimer = Timer(const Duration(seconds: 4), () {
+    durationTimer = Timer(const Duration(seconds: 4), () {
       GoRouter.of(Utils.mainNav.currentContext!).go(LoadingPage.route);
     });
 

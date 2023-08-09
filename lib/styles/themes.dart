@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:home_automation_app/styles/colors.dart';
 import 'package:home_automation_app/styles/styles.dart';
 
@@ -51,19 +50,19 @@ class HomeAutomationTheme {
       color: HomeAutomationColors.darkSecondary
     ),
     snackBarTheme: SnackBarThemeData(
-          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(HomeAutomationStyles.mediumRadius),
-            topRight: Radius.circular(HomeAutomationStyles.mediumRadius),
-          )),
-          backgroundColor: HomeAutomationColors.darkPrimary,
-          actionTextColor: Colors.black,
-          closeIconColor: Colors.black,
-          insetPadding: HomeAutomationStyles.smallPadding,
-          contentTextStyle: HomeAutomationStyles.labelMedium.copyWith(
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        )
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(HomeAutomationStyles.mediumRadius),
+        topRight: Radius.circular(HomeAutomationStyles.mediumRadius),
+      )),
+      backgroundColor: HomeAutomationColors.darkPrimary,
+      actionTextColor: Colors.black,
+      closeIconColor: Colors.black,
+      insetPadding: HomeAutomationStyles.smallPadding,
+      contentTextStyle: HomeAutomationStyles.labelMedium.copyWith(
+        fontWeight: FontWeight.bold,
+        color: Colors.black,
+      ),
+    )
   );
     
   static ThemeData light = ThemeData(
