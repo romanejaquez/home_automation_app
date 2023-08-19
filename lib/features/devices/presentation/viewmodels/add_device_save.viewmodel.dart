@@ -19,7 +19,7 @@ class AddDeviceSaveViewModel extends StateNotifier<AddDeviceStates> {
 
     // collect the info
     final label = ref.read(deviceNameValueProvider);
-    final outletIndex = ref.read(outletValueProvider.notifier).state++;
+    final outlet = ref.read(outletValueProvider);
     final deviceType = ref.read(deviceTypeSelectionVMProvider.notifier).getSelectedDeviceType();
 
     ref.read(deviceListVMProvider.notifier).addDevice(
@@ -27,7 +27,7 @@ class AddDeviceSaveViewModel extends StateNotifier<AddDeviceStates> {
         iconOption: deviceType.iconOption,
         label: label,
         isSelected: false,
-        outlet: outletIndex
+        outlet: int.parse(outlet!.id),
       )
     );
 
@@ -52,7 +52,7 @@ class AddDeviceSaveViewModel extends StateNotifier<AddDeviceStates> {
 
     ref.read(deviceNameFieldProvider).clear();
     ref.read(deviceNameValueProvider.notifier).state = '';
-    ref.read(outletValueProvider.notifier).state = -1;
+    ref.read(outletValueProvider.notifier).state = null;
     var rawList = ref.read(deviceTypeListProvider);
     ref.read(deviceTypeSelectionVMProvider.notifier).state = rawList;
   }

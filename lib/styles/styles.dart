@@ -19,6 +19,11 @@ class HomeAutomationStyles {
   static const double xlargeIconSize = 80;
   static const double x2largeIconSize = 160;
 
+  // custom sizes
+  static const double loadingIconSize = 220;
+  static const double appBarSize = 60;
+
+
   static const double xsmallSize = 8;
   static const double smallSize = 16;
   static const double mediumSize = 32;

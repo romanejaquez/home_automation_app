@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:home_automation_app/features/devices/data/models/device.model.dart';
 import 'package:home_automation_app/features/devices/presentation/pages/device_details.page.dart';
-import 'package:home_automation_app/features/devices/presentation/providers/add_device_providers.dart';
 import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
 import 'package:home_automation_app/helpers/utils.dart';
 
@@ -15,7 +14,7 @@ class DeviceListViewModel extends StateNotifier<List<DeviceModel>> {
     state = devices;
   }
 
-  void toggleDevice(DeviceModel selectedDevice) {
+  void toggleDevice(DeviceModel selectedDevice) async {
 
     state = [
       for(final device in state)
@@ -24,8 +23,6 @@ class DeviceListViewModel extends StateNotifier<List<DeviceModel>> {
         else
           device
     ];
-
-    ref.read(saveAddDeviceVMProvider.notifier).saveDeviceList();
   }
 
   void addDevice(DeviceModel device) {
@@ -40,12 +37,17 @@ class DeviceListViewModel extends StateNotifier<List<DeviceModel>> {
 
   void showDeviceDetails(device) {
     ref.read(selectedDeviceProvider.notifier).state = device;
-    GoRouter.of(Utils.mainNav.currentContext!).push(DeviceDetailsPage.route);
+    
+    if (Utils.isMobile()) {
+      GoRouter.of(Utils.mainNav.currentContext!).push(DeviceDetailsPage.route);
+    }
   }
 
   void removeDevice(DeviceModel deviceData) {
 
-    GoRouter.of(Utils.mainNav.currentContext!).pop();
+    if (Utils.isMobile()) {
+      GoRouter.of(Utils.mainNav.currentContext!).pop();
+    }
 
     state = [
       for(final device in state)

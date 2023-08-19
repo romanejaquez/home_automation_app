@@ -1,4 +1,3 @@
-import 'package:home_automation_app/features/shared/widgets/flicky_animated_icons.dart';
 import 'package:home_automation_app/helpers/enums.dart';
 
 class DeviceModel {
@@ -27,15 +26,6 @@ class DeviceModel {
       label: label ?? this.label,
       isSelected: isSelected ?? this.isSelected,
       outlet: outlet ?? this.outlet
-    );
-  }
-
-  static DeviceModel empty() {
-    return const DeviceModel(
-      iconOption: FlickyAnimatedIconOptions.none,
-      label: '',
-      isSelected: false,
-      outlet: -1
     );
   }
 

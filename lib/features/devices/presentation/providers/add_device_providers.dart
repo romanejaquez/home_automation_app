@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_automation_app/features/devices/data/models/device.model.dart';
+import 'package:home_automation_app/features/devices/data/models/outlet.model.dart';
+import 'package:home_automation_app/features/devices/data/repositories/outlets.repository.dart';
 import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
-import 'package:home_automation_app/features/devices/presentation/viewmodels/add_device.viewmodel.dart';
+import 'package:home_automation_app/features/devices/presentation/viewmodels/add_device_type.viewmodel.dart';
 import 'package:home_automation_app/features/devices/presentation/viewmodels/add_device_save.viewmodel.dart';
+import 'package:home_automation_app/features/devices/presentation/viewmodels/outletlist.viewmodel.dart';
 import 'package:home_automation_app/helpers/enums.dart';
 
 final deviceNameFieldProvider = Provider((ref) {
@@ -12,7 +15,17 @@ final deviceNameFieldProvider = Provider((ref) {
 
 final deviceNameValueProvider = StateProvider<String>((ref) => '');
 
-final outletValueProvider = StateProvider<int>((ref) => -1);
+final outletListRepositoryProvider = FutureProvider<bool>((ref) async {
+  final outletList = await OutletsRepository().getAvailableOutlets();
+  ref.read(outletListProvider.notifier).initializeList(outletList);
+  return true;
+});
+
+final outletListProvider = StateNotifierProvider<OutletListViewModel, List<OutletModel>>((ref) {
+  return OutletListViewModel([], ref);
+});
+
+final outletValueProvider = StateProvider<OutletModel?>((ref) => null);
 
 final deviceTypeListProvider = Provider<List<DeviceModel>>((ref) {
   return const [
@@ -70,7 +83,7 @@ final formValidationProvider = Provider<bool>((ref) {
     !ref.read(deviceListVMProvider.notifier).deviceExists(deviceName);
   
   var isFormValid = deviceName.isNotEmpty && 
-      deviceTypeSelected && deviceDoesNotExist; // && outlet >= 0 
+      deviceTypeSelected && deviceDoesNotExist && outlet != null; 
 
   return isFormValid;
 });

@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:home_automation_app/features/navigation/data/models/bottombarnavitem.model.dart';
+import 'package:home_automation_app/features/navigation/data/models/bottom_bar_nav_item.dart';
 import 'package:home_automation_app/features/navigation/providers/navigation_providers.dart';
 import 'package:home_automation_app/helpers/utils.dart';
 

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_automation_app/features/devices/data/models/device.model.dart';
-import 'package:home_automation_app/features/devices/presentation/providers/device_providers.dart';
 import 'package:home_automation_app/features/shared/widgets/flicky_animated_icons.dart';
 import 'package:home_automation_app/styles/styles.dart';
 

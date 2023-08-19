@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:home_automation_app/features/landing/presentation/responsiveness/landing_page_responsive.config.dart';
 import 'package:home_automation_app/features/navigation/presentation/widgets/home_automation_bottombar.dart';
 import 'package:home_automation_app/features/navigation/presentation/widgets/main_appbar.dart';
 import 'package:home_automation_app/features/navigation/presentation/widgets/side_drawer.dart';
-import 'package:home_automation_app/features/shared/widgets/flicky_animated_icons.dart';
-import 'package:home_automation_app/helpers/enums.dart';
-import 'package:home_automation_app/styles/styles.dart';
 
 class LandingPage extends StatelessWidget {
 
@@ -18,19 +16,30 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    final config = LandingPageResponsiveConfig.landingPageConfig(context);
+
     return Scaffold(
       drawer: const Drawer(
         child: SideDrawer(),
       ),
       appBar: const HomeAutomationAppBar(),
       body: Center(
-        child: Column(
+        child: Flex(
+          verticalDirection: config.contentVerticalDirection,
+          direction: config.contentDirection,
           children: [
-            Expanded(child: child),
+            Expanded(child: SafeArea(child: child)),
             const HomeAutomationBottomBar(),
-          ],
+          ].reverse(config.reverseContent),
         ),
       )
     );
+  }
+}
+
+extension ReversedList on List<Widget> {
+
+  List<Widget> reverse(bool reverse) {
+    return reverse ? reversed.toList() : this;
   }
 }

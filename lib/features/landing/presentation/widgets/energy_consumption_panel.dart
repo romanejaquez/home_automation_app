@@ -44,7 +44,10 @@ class EnergyConsumptionPanel extends ConsumerWidget {
           ),
           Expanded(
             child: ListView.builder(
-              padding: const EdgeInsets.only(left: HomeAutomationStyles.mediumSize),
+              padding: const EdgeInsets.only(
+                left: HomeAutomationStyles.mediumSize,
+                bottom: HomeAutomationStyles.smallSize,
+              ),
               scrollDirection: Axis.horizontal,
               itemCount: energyConsumption.values!.length,
               itemBuilder:(context, index) {

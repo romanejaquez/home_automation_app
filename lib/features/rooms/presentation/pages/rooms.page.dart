@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:home_automation_app/features/shared/widgets/flicky_animated_icons.dart';
 import 'package:home_automation_app/features/shared/widgets/main_page_header.dart';
+import 'package:home_automation_app/features/shared/widgets/warning_message.dart';
+import 'package:home_automation_app/helpers/enums.dart';
 import 'package:home_automation_app/styles/flicky_icons_icons.dart';
 
 class RoomsPage extends StatelessWidget {
@@ -10,15 +13,19 @@ class RoomsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const MainPageHeader(
-          icon: FlickyIcons.room,
+        MainPageHeader(
+          icon: FlickyAnimatedIcons(
+            icon: FlickyAnimatedIconOptions.barrooms,
+            size: FlickyAnimatedIconSizes.large,
+            isSelected: true,
+          ),
           title: 'My Rooms',
         ),
         Expanded(
-          child: Container()
+          child: WarningMessage(message: 'No available rooms'),
         )
       ],
     );
