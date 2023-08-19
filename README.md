@@ -1,16 +1,11 @@
-# home_automation_app
+# Home Automation App in Flutter
 
-A new Flutter project.
+This is the companion app to the YouTube video Series "Home Automation App in Flutter", a series of videos in which I built a Home Automation System for my home using Flutter by sending commands to connected start plugs and devices installed around the house.
 
-## Getting Started
+We'll go into the products I picked, their specs, how I set them up, and then we'll go into coding a solution in Flutter that I can deploy to multiple devices around the house so they can serve as hubs for managing the devices I want to control in any given room, like turn them on and off, changing the light intensity, etc.
 
-This project is a starting point for a Flutter application.
+![App](app_mockups.png)
 
-A few resources to get you started if this is your first Flutter project:
+Check out the videos [here](https://www.youtube.com/playlist?list=PL8NTBhIXP2gH-Z7pgJ6W3wYodZwe7d6bI).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![App](main_thumb.png)
