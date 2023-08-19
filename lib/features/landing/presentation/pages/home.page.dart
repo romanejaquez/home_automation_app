@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:home_automation_app/features/landing/presentation/responsiveness/landing_page_responsive.config.dart';
 import 'package:home_automation_app/features/landing/presentation/widgets/energy_consumption_panel.dart';
 import 'package:home_automation_app/features/landing/presentation/widgets/home_page_header.dart';
-import 'package:home_automation_app/features/landing/presentation/widgets/home_page_tile.dart';
 import 'package:home_automation_app/features/landing/presentation/widgets/home_tile_options_panel.dart';
 import 'package:home_automation_app/styles/styles.dart';
 

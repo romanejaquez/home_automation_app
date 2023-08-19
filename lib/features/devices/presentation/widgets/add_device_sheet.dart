@@ -36,7 +36,10 @@ class AddDeviceSheet extends ConsumerWidget {
 
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(HomeAutomationStyles.mediumRadius),
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(HomeAutomationStyles.mediumRadius),
+          topLeft: Radius.circular(HomeAutomationStyles.mediumRadius),
+        ),
         color: Theme.of(context).scaffoldBackgroundColor,
       ),
       child: SafeArea(
