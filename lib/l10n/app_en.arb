@@ -1,0 +1,17 @@
+{
+    "welcomeLabel": "Welcome",
+    "initializingAppLabel": "Initializing App",
+    "loadingDeviceListLabel":"Loading Device list",
+    "loadingOutletConfigLabel":"Loading Outlet Config",
+    "doneLabel": "Done",
+    "errorLoadingAppLabel": "Error Loading App",
+    "myEnergyConsumptionInKW": "My Energy Consumption (kW)",
+    "quickActionsLabel": "Quick Actions",
+    "addNewDeviceLabel": "Add New Device",
+    "manageDevicesLabel": "Manage Devices",
+    "testConnectivityLabel": "Test Connectivity",
+    "aboutFlickyLabel": "About Flicky",
+    "myHomeLabel": "My Home",
+    "myNetworkLabel": "My Network"
+
+}

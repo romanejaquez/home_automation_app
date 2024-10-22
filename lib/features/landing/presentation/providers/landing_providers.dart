@@ -5,7 +5,7 @@ import 'package:home_automation_app/features/landing/data/repositories/home_tile
 import 'package:home_automation_app/features/landing/presentation/viewmodels/home_tile_options.viewmodel.dart';
 
 final homeTileOptionsRepositoryProvider = Provider((ref) {
-  return HomeTileOptionsRepository();
+  return HomeTileOptionsRepository(ref);
 });
 
 final homeTileOptionsVMProvider = StateNotifierProvider<HomeTileOptionsViewmodel, List<HomeTileOption>>((ref) {

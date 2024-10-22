@@ -13,24 +13,25 @@ class LoadingNotificationViewModel extends StateNotifier<AppLoadingStates> {
 
   Future<void> triggerLoading() async {
 
+    final loc = ref.read(appLocalizationsProvider);
     state = AppLoadingStates.loading;
 
-    ref.read(loadingMessageProvider.notifier).state = 'Initializing App...';
+    ref.read(loadingMessageProvider.notifier).state = '${loc.initializingAppLabel}...';
 
     final localStorageInitialized = await ref.read(localStorageProvider).initLocalStorage();
     await Future.delayed(1.seconds);
 
-    ref.read(loadingMessageProvider.notifier).state = 'Loading Device list...';
+    ref.read(loadingMessageProvider.notifier).state = '${loc.loadingDeviceListLabel}...';
     final devicesList = await ref.read(deviceRepositoryProvider).getListOfDevices();
     ref.read(deviceListVMProvider.notifier).initializeState(devicesList);
     await Future.delayed(1.seconds);
 
-    ref.read(loadingMessageProvider.notifier).state = 'Loading Outlet Config...';
+    ref.read(loadingMessageProvider.notifier).state = '${loc.loadingOutletConfigLabel}...';
     final outletListLoaded = await ref.read(outletListRepositoryProvider.future);
     final result = localStorageInitialized && outletListLoaded;
 
     await Future.delayed(1.seconds);
-    ref.read(loadingMessageProvider.notifier).state = result ? 'Done' : 'Error Loading App';
+    ref.read(loadingMessageProvider.notifier).state = result ? loc.doneLabel : loc.errorLoadingAppLabel;
     state = result ? AppLoadingStates.success : AppLoadingStates.error;
   }
 }

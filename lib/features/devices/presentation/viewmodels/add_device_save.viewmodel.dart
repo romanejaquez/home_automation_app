@@ -7,17 +7,24 @@ import 'package:home_automation_app/features/devices/presentation/providers/devi
 import 'package:home_automation_app/helpers/enums.dart';
 import 'package:home_automation_app/helpers/utils.dart';
 
+/// this is a sample project and sample class
 class AddDeviceSaveViewModel extends StateNotifier<AddDeviceStates> {
 
   final Ref ref;
+
+  /// constructor
+  /// @param state the state of the vm
+  /// @param ref the reference to the Riverpod provider
+  /// returns an instance of the view model
   AddDeviceSaveViewModel(super.state, this.ref);
 
+  /// this method saves the device
   Future<void> saveDevice() async {
 
     state = AddDeviceStates.saving;
     await Future.delayed(1.seconds);
 
-    // collect the info
+    /// collect the info
     final label = ref.read(deviceNameValueProvider);
     final outlet = ref.read(outletValueProvider);
     final deviceType = ref.read(deviceTypeSelectionVMProvider.notifier).getSelectedDeviceType();

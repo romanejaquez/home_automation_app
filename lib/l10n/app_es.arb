@@ -1,0 +1,16 @@
+{
+    "welcomeLabel": "Bienvenido",
+    "initializingAppLabel": "Initializando Aplicación",
+    "loadingDeviceListLabel":"Cargando Lista de Dispositivos",
+    "loadingOutletConfigLabel":"Cargando Tomacorrientes",
+    "doneLabel": "Listo",
+    "errorLoadingAppLabel": "Error Cargando la App",
+    "myEnergyConsumptionInKW": "Mi Consumo de Energía (kW)",
+    "quickActionsLabel": "Acciones Rápidas",
+    "addNewDeviceLabel": "Añadir Nuevo Dispositivo",
+    "manageDevicesLabel": "Manejar Dispositivos",
+    "testConnectivityLabel": "Probar Conectividad",
+    "aboutFlickyLabel": "Sobre Flicky",
+    "myHomeLabel": "Mi Hogar",
+    "myNetworkLabel": "Mi Red"
+}

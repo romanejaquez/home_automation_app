@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_automation_app/features/landing/presentation/responsiveness/landing_page_responsive.config.dart';
+import 'package:home_automation_app/features/shared/providers/shared_providers.dart';
 import 'package:home_automation_app/features/shared/widgets/flicky_animated_icons.dart';
 import 'package:home_automation_app/helpers/enums.dart';
 import 'package:home_automation_app/styles/styles.dart';
 
-class HomePageHeader extends StatelessWidget {
+class HomePageHeader extends ConsumerWidget {
   const HomePageHeader({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
 
     final config = LandingPageResponsiveConfig.landingPageConfig(context);
+    final loc = ref.read(appLocalizationsProvider);
 
     return Padding(
       padding: HomeAutomationStyles.mediumPadding.copyWith(
@@ -31,7 +34,7 @@ class HomePageHeader extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Welcome,', 
+              Text('${loc.welcomeLabel},', 
                 style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                   color: Theme.of(context).colorScheme.secondary
                 )

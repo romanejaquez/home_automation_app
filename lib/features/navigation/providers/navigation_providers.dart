@@ -16,7 +16,7 @@ final bottomBarRepositoryProvider = Provider((ref) {
 });
 
 final sideMenuRepositoryProvider = Provider((ref) {
-  return SideMenuRepository();
+  return SideMenuRepository(ref);
 });
 
 final sideMenuProvider = Provider<List<SideMenuItem>>((ref) {
